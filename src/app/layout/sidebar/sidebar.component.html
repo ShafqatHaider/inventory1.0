@@ -10,7 +10,7 @@
           (click)="toggleMenu('receivables')"
           [attr.aria-expanded]="dropdowns.receivables"
         >
-          Receivables
+          Accounts
           <i class="bi bi-chevron-down float-end"></i>
         </a>
         <ul
@@ -18,7 +18,7 @@
           *ngIf="dropdowns.receivables"
           style="list-style: none;"
         >
-          <li class="list-group-item"><a href="#">Invoices</a></li>
+          <li class="list-group-item"><a [routerLink]="'Accounts/account-index'">Accounts</a></li>
           <li class="list-group-item"><a href="#">Payments</a></li>
         </ul>
       </li>
