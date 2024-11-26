@@ -4,7 +4,8 @@ import { SidebarService } from '../supportives/sidbar.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+  styleUrl: './sidebar.component.scss',
+  standalone:false
 })
 export class SidebarComponent {
   dropdowns:any = {
