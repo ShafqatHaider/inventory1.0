@@ -7,5 +7,14 @@ import { SidebarService } from '../supportives/sidbar.service';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+  dropdowns:any = {
+    receivables: false,
+    payables: false,
+  };
+
   constructor(public sidebarService: SidebarService) {}
+
+  toggleMenu(menu: string) {
+    this.dropdowns[menu] = !this.dropdowns[menu];
+  }
 }

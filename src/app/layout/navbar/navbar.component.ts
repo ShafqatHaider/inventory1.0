@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SidebarService } from '../supportives/sidbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  constructor(public sidebarService: SidebarService) {}
 
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
+  }
 }
