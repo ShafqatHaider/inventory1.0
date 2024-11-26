@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
-import { CardComponent } from './shared/card/card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,15 @@ import { CardComponent } from './shared/card/card.component';
     NavbarComponent,
     SidebarComponent,
     DashboardComponent,
-    CardComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

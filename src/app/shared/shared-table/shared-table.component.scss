@@ -1,0 +1,37 @@
+@media screen and (max-width: 550px) {
+    span{
+        font-size: 8px;
+    }
+}
+
+
+.table-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  
+    .filter-input {
+      width: 50%;
+    }
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 16px;
+    font-size: 1.2rem;
+    color: #999;
+  }
+  
+  .mat-table {
+    width: 100%;
+  }
+  
+  mat-paginator {
+    margin-top: 16px;
+  }
+  
+  .table-responsive{
+    overflow-y: scroll;
+    height: 80vh;
+  }
