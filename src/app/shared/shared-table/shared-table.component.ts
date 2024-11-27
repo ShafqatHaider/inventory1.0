@@ -47,7 +47,7 @@ isNotData=false;
   }
   transformData(row: any, key: string): any {
     if (this.dateFields.includes(key)) {
-      return this.pipe.transform(row[key], 'dd-MM-yyyy'); // Transform date field
+      return this.pipe.transform(row[key], 'dd-MM-yyyy'); 
     }
     return row[key];
   }

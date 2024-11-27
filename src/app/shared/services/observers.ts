@@ -25,6 +25,7 @@ getByParam(url:any,param:any):Observable<any>
 }
 getLookups(url:any):Observable<any>
 {
+    debugger
     return this.http.get(url,{headers:this.headers})
 }
 

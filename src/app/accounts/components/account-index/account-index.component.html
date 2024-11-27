@@ -2,8 +2,14 @@
   <app-shared-table
   [tableTitle]="'Sub Account Index'"
   [tableHeaders]="['Id','Title']"
-  [tableKeys]="['accId','title']"
+  [tableKeys]="['accID','title']"
+  [tableData]="config.data"
   
+  (newClick)="add()"
+  (edit)="edit()"
+  (delete)="delete()"
+  [isAction]="true"
+  [isNewAction]="true"
   ></app-shared-table>
   <!-- [dateFields]="['cDate']"
    
