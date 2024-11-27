@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
@@ -9,6 +8,7 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NgSelectComponent } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgSelectComponent
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
