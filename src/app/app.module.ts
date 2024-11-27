@@ -24,7 +24,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     NgSelectModule
     
-    NgSelectModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
