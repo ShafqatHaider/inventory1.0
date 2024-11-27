@@ -1,1 +1,13 @@
-<p>daybookindex works!</p>
+  
+  <app-shared-table
+  [tableTitle]="'Daybook Index'"
+  [tableHeaders]="['Id','Date']"
+  [tableKeys]="['cid','eDate']"
+  [tableData]="config.data"
+  [dateFields]="['eDate']"
+  (newClick)="add()"
+  (edit)="edit()"
+  (delete)="delete()"
+  [isAction]="true"
+  [isNewAction]="true"
+  ></app-shared-table>

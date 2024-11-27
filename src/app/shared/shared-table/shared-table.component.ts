@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FilterService } from '../services/filter.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { FilterService } from '../services/filter.service';
   styleUrl: './shared-table.component.scss',
   standalone:false
 })
-export class SharedTableComponent {
+export class SharedTableComponent implements OnInit, OnChanges{
   @Input() tableTitle: string = 'Table Title';
   @Input() tableHeaders: string[] = [];
   @Input() tableKeys: string[] = [];
@@ -18,10 +18,10 @@ export class SharedTableComponent {
   @Output() edit = new EventEmitter<any>();
   @Output() addNewClick = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
-  @Input() isAction :boolean=false;
+  @Input() isAction :boolean=true;
   @Input() isNewAction :boolean=false;
   @Input() btnTitle = '';
-  filterText: any; 
+  filterText: string=''; 
   filteredData: any[] = [];
   @Input() isReturnButton=false;
 isLoading=false;
@@ -52,7 +52,7 @@ isNotData=false;
     return row[key];
   }
   ngOnChanges() {
-    this.applyFilter(); // Reapply filter when data changes
+    this.applyFilter(); 
   }
 
   onNewClick() {

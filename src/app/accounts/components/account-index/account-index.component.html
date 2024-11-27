@@ -4,10 +4,9 @@
   [tableHeaders]="['Id','Title']"
   [tableKeys]="['accID','title']"
   [tableData]="config.data"
-  
-  (newClick)="add()"
-  (edit)="edit()"
-  (delete)="delete()"
+  (newClick)="onAdd()"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)"
   [isAction]="true"
   [isNewAction]="true"
   ></app-shared-table>
