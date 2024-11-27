@@ -1,0 +1,28 @@
+<div>
+    <!-- First Dropdown -->
+    <app-inp-select
+      [label]="'Select Country'"
+      [items]="countries"
+      bindLabel="name"
+      bindValue="code"
+      [(selected)]="selectedCountry"
+      (onSelect)="onCountryChange($event)"
+    ></app-inp-select>
+  
+    <!-- Second Dropdown -->
+    <app-inp-select
+      [label]="'Select City'"
+      [items]="cities"
+      bindLabel="name"
+      bindValue="id"
+      [(selected)]="selectedCity"
+      (onSelect)="onCityChange($event)"
+    ></app-inp-select>
+  
+    <!-- Display the selected values -->
+    <div>
+      <p>Selected Country: {{ selectedCountry | json }}</p>
+      <p>Selected City: {{ selectedCity | json }}</p>
+    </div>
+  </div>
+  

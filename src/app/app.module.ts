@@ -8,7 +8,7 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectComponent, NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgSelectComponent
+    NgSelectModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

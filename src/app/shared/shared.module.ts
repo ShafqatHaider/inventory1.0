@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { InpSelectComponent } from './_components/inp-select/inp-select.component';
 import { InpFieldComponent } from './_components/inp-field/inp-field.component';
 import { InpTextareaComponent } from './_components/inp-textarea/inp-textarea.component';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 
@@ -20,11 +21,17 @@ import { NgSelectComponent } from '@ng-select/ng-select';
   ],
   imports: [
     CommonModule,
-    FormsModule,NgSelectComponent
+    FormsModule,
+    NgSelectModule
   ],
   exports:[
     CardComponent,
-    SharedTableComponent
+    FormsModule,
+    SharedTableComponent,
+    InpSelectComponent,
+    InpFieldComponent,
+    InpTextareaComponent,
+    
   ]
 })
 export class SharedModule { }

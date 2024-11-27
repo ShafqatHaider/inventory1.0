@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountConfigurations } from '../../supportives/AccountConfigurations';
 import { Observables } from '../../../shared/services/observers';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-index',
@@ -9,9 +10,9 @@ import { Observables } from '../../../shared/services/observers';
   standalone:false
 })
 export class AccountIndexComponent implements OnInit{
-  constructor(private observers:Observables) { }
+  constructor(private observers:Observables,private route:Router) { }
 data:any[]=[]
-add(){}
+add(){this.route.navigate(['/Accounts/new-account'])}
 edit(){}
 delete(){}
 config= AccountConfigurations.accounts;

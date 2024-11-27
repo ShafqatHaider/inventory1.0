@@ -1,4 +1,12 @@
-<label class="form-label">{{label}}</label>
-<ng-select>
-    
+<div class="form-group">
+<label class="form-label">{{ label }}</label>
+<ng-select
+class="form-control"
+  [items]="items"
+  [bindLabel]="bindLabel"
+  [bindValue]="bindValue"
+  [(ngModel)]="selectedValue"
+  (change)="onSelectVal($event)"
+>
 </ng-select>
+</div>
