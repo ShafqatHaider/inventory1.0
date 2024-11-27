@@ -21,7 +21,7 @@ ngOnInit(): void {
   this.getData();
 }
 getData(){
-  this.observer.getLookups(`${this.config.endPoints.getAll}${this.config.shared.companyId}/${this.config.shared.branchId}`)
+  this.observer.getLookups(`${this.config.endPoints.getAll}`)
 }
 add(){}
 edit(){}

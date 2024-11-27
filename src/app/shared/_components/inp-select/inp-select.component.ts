@@ -10,8 +10,8 @@ export class InpSelectComponent {
   @Input() label: string = '';
   @Input() items: any[] = [];
   @Input() bindValue: any;
-
-  
+@Input() isAddBtn:boolean=false;
+  @Output() onAdd = new EventEmitter();
   @Input() selected: any;
 
   
@@ -23,5 +23,8 @@ export class InpSelectComponent {
     debugger
     this.selected = event; 
     this.selectedChange.emit(event)
+  }
+  onAddVal(e:any){
+    this.onAdd.emit(e)
   }
 }

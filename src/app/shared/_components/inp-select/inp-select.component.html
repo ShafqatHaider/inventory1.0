@@ -1,6 +1,8 @@
 <div class="form-group">
 <label class="form-label">{{ label }}</label>
-<ng-select
+<!-- <div class="row">
+  <div [ngClass]="{'col-11': isAddBtn, 'col-12': !isAddBtn}">
+    <ng-select
 class="form-control"
   [items]="items"
   [bindLabel]="bindLabel"
@@ -9,4 +11,26 @@ class="form-control"
   (change)="onSelectVal($event)"
 >
 </ng-select>
+  </div>
+  <div class="col-1" *ngIf="isAddBtn">
+    <button class="btn btn-primary" (click)="onAddVal($event)">+</button>
+  </div>
+</div> -->
+<div class="row g-0 ">
+  <!-- Input Group with ng-select -->
+  <div class="col-11 d-flex">
+    <ng-select
+      class="form-control"
+      [items]="items"
+      [bindLabel]="bindLabel"
+      [bindValue]="bindValue"
+      [(ngModel)]="selectedValue"
+      (change)="onSelectVal($event)"
+    >
+    </ng-select>
+    <!-- Button at the end -->
+    <button *ngIf="isAddBtn" class="btn btn-primary ms-2" (click)="onAddVal($event)">+</button>
+  </div>
+</div>
+
 </div>

@@ -13,32 +13,26 @@ export const AccountConfigurations={
         model:new IAccounts(),
         endPoints:{
             create:`${environment.baseApiUrl}SubAccounts/create`,
-            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/`,
-            getById:`${environment.baseApiUrl}SubAccounts/GetSubAccountById/`,
-            delete:`${environment.baseApiUrl}SubAccounts/Delete/`
+            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}SubAccounts/GetSubAccountById/${param}/${environment.companyId}/${environment.branchId}`,
+            delete:(param:any)=>`${environment.baseApiUrl}SubAccounts/Delete/${param}/${environment.companyId}/${environment.branchId}`
         },
         methods:{
             reset:()=>_trans.resetAccountObj()
-        },shared:{
-            branchId:Number(localStorage.getItem('BRANCH_ID')),
-            companyId:Number(localStorage.getItem('COMPANY_ID'))
-        },
+        }
     },
     daybook:{
         data:[],
         model:new IDayBook(),
         endPoints:{
             create:`${environment.baseApiUrl}SubAccounts/create`,
-            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/`,
-            getById:`${environment.baseApiUrl}SubAccounts/GetSubAccountById/`,
-            delete:`${environment.baseApiUrl}SubAccounts/Delete/`
+            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts//${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}SubAccounts/GetSubAccountById/${param}/${environment.companyId}/${environment.branchId}`,
+            delete:(param:any)=>`${environment.baseApiUrl}SubAccounts/Delete/${param}/${environment.companyId}/${environment.branchId}`
         },
         methods:{
             reset:()=>_trans.resetDaybookObj()
-        },shared:{
-            branchId:Number(localStorage.getItem('BRANCH_ID')),
-            companyId:Number(localStorage.getItem('COMPANY_ID'))
-        },
+        }
     },
     lookups:{
         cityLookups:[],
@@ -48,13 +42,10 @@ export const AccountConfigurations={
         balanceType:[],
         endPoints:{
             create:`${environment.baseApiUrl}SubAccounts/create`,
-            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/`,
-            getById:`${environment.baseApiUrl}SubAccounts/GetSubAccountById/`,
-            delete:`${environment.baseApiUrl}SubAccounts/Delete/`
-        },shared:{
-            branchId:Number(localStorage.getItem('BRANCH_ID')),
-            companyId:Number(localStorage.getItem('COMPANY_ID'))
-        },
+            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts//${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}SubAccounts/GetSubAccountById/${param}/${environment.companyId}/${environment.branchId}`,
+            delete:(param:any)=>`${environment.baseApiUrl}SubAccounts/Delete/${param}/${environment.companyId}/${environment.branchId}`
+        }
     },
     payment:{
         data:[],
@@ -62,16 +53,13 @@ export const AccountConfigurations={
         ,
         endPoints:{
             create:`${environment.baseApiUrl}SubAccounts/create`,
-            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/`,
-            getById:`${environment.baseApiUrl}SubAccounts/GetSubAccountById/`,
-            delete:`${environment.baseApiUrl}SubAccounts/Delete/`
+            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts//${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}SubAccounts/GetSubAccountById/${param}/${environment.companyId}/${environment.branchId}`,
+            delete:(param:any)=>`${environment.baseApiUrl}SubAccounts/Delete/${param}/${environment.companyId}/${environment.branchId}`
         },
         methods:{
             reset:()=>_trans.resetPaymentObj()
-        },shared:{
-            branchId:Number(localStorage.getItem('BRANCH_ID')),
-            companyId:Number(localStorage.getItem('COMPANY_ID'))
-        },
+        }
         
     },
     receipt:{
@@ -79,16 +67,13 @@ export const AccountConfigurations={
         model:new IRBook(),
         endPoints:{
             create:`${environment.baseApiUrl}SubAccounts/create`,
-            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts/`,
-            getById:`${environment.baseApiUrl}SubAccounts/GetSubAccountById/`,
-            delete:`${environment.baseApiUrl}SubAccounts/Delete/`
+            getAll:`${environment.baseApiUrl}SubAccounts/GetAllSubAccounts//${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}SubAccounts/GetSubAccountById/${param}/${environment.companyId}/${environment.branchId}`,
+            delete:(param:any)=>`${environment.baseApiUrl}SubAccounts/Delete/${param}/${environment.companyId}/${environment.branchId}`
         },
         
         methods:{
             reset:()=>_trans.resetRbookObj()
-        },shared:{
-            branchId:Number(localStorage.getItem('BRANCH_ID')),
-            companyId:Number(localStorage.getItem('COMPANY_ID'))
-        },
+        }
     }
 }
