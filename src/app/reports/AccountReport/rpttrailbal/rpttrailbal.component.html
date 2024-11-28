@@ -1,0 +1,296 @@
+<div class="container-fluid mt-2 py-3">
+  <!-- <app-snakbar *ngIf="!isData"></app-snakbar> -->
+  <div class="card">
+    <!-- <div class="card-head py-2 px-1" style="background: #e5f2fe">
+      <div class="flex-row">
+        <div class="back no-print">
+          <a (click)="back()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+        </div>
+
+        <div class="heading">
+          <h5 class="text-center">Trail Balance Report</h5>
+        </div>
+      </div>
+      <div class="row px-2">
+        <div class="col-6 col-sm-2 col-lg-2">
+          <div class="form-group">
+            <label>Select Period</label>
+            <input type="number" class="form-control" [(ngModel)]="period" />
+          </div>
+        </div>
+        <div class="col-6 col-sm-2 col-lg-2">
+          <label>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                #filter
+                
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                {{
+                  !isFilter
+                    ? "Filter By Category Account"
+                    : "Select Category Account"
+                }}
+              </label>
+            </div>
+          </label>
+          <ng-select
+            [ngClass]="{ disabled: !isFilter }"
+            [appendTo]="'body'"
+            [items]="cateAcc"
+            bindLabel="cateAccTitle"
+            bindValue="cateAccId"
+            (change)="cateAccChange($event)"
+            required
+          >
+          </ng-select>
+        </div>
+
+        <div class="col-6 col-sm-2 col-lg-2">
+          <div class="form-group" style="width: 100%">
+            <label>To</label>
+            <input type="date" class="form-control" [(ngModel)]="tDate" />
+          </div>
+        </div>
+        <div class="col-6 col-sm-2 col-lg-2">
+          <div class="form-group">
+            <label>Select Transaction Type</label>
+            <ng-select
+              [appendTo]="'body'"
+              [items]="folios"
+              bindLabel="lg_type"
+              (change)="onSelectFolio($event)"
+            >
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-12 col-sm-2 col-lg-2">
+          <div class="row mt-2">
+            <button
+              class="eas-button eas-btn-white mt-4 no-print"
+              (click)="getReport()"
+              style="width: 45%"
+            >
+              <i
+                class="fa-solid fa-arrows-rotate"
+                [ngClass]="{ rotate: isLoading }"
+              ></i>
+            </button>
+            <button
+              class="eas-button eas-btn-white mt-4 no-print"
+              (click)="createReportPdf()"
+              style="width: 45%"
+            >
+              PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="card " style="background-color: rgba(217, 217, 217, 1);">
+      <div class="flex-row ">
+        <div class="col-md-2">
+          <div class="d-flex gap-2">
+            <a (click)="back()">
+              <i class="fa-solid fa-arrow-left fs-4 mt-1"></i>
+            </a> 
+            <h4>Trail Balance</h4>
+            
+          </div>
+        </div>
+        <div class="col-md-10 mb-2">
+          <div class="row px-2">
+            <div class="col-6 col-sm-2 col-lg-2">
+              <div class="form-group">
+                <label>Select Period</label>
+                <input type="number" class="form-control" [(ngModel)]="period" />
+              </div>
+            </div>
+            <div class="col-6 col-sm-2 col-lg-3">
+              <label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    #filter
+                    
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    {{
+                      !isFilter
+                        ? "Filter By Category Account"
+                        : "Select Category Account"
+                    }}
+                  </label>
+                </div>
+              </label>
+              <ng-select
+                [ngClass]="{ disabled: !isFilter }"
+                [appendTo]="'body'"
+                [items]="cateAcc"
+                bindLabel="cateAccTitle"
+                bindValue="cateAccId"
+                (change)="cateAccChange($event)"
+                required
+              >
+              </ng-select>
+            </div>
+    
+            <div class="col-6 col-sm-2 col-lg-2">
+              <div class="form-group" style="width: 100%">
+                <label>To</label>
+                <input type="date" class="form-control" [(ngModel)]="tDate" />
+              </div>
+            </div>
+            <div class="col-6 col-sm-2 col-lg-3">
+              <div class="form-group">
+                <label>Select Transaction Type</label>
+                <ng-select
+                  [appendTo]="'body'"
+                  [items]="folios"
+                  bindLabel="lg_type"
+                  (change)="onSelectFolio($event)"
+                >
+                </ng-select>
+              </div>
+            </div>
+            <div class="col-6 col-sm-6 col-md-2">
+              <div class="row mt-4">
+                <button
+                  class="eas-button eas-btn-white  no-print form-control text-light"
+                  (click)="getReport()"
+                  style="width: 45%;background-color: rgba(27, 143, 252, 1);"
+                >
+                  Get
+                </button>
+                <button
+                  class="eas-button eas-btn-white  no-print form-control"
+                  (click)="createReportPdf()"
+                  style="width: 45% ; background-color: rgba(252, 226, 31, 1);
+;"
+                >
+                  Export
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card-body" style="width: 100%">
+      <ng-container *ngIf="isData">
+        <div class="card border-0 shadow px-2 no-shade">
+          <div class="card-head">
+            <div class="row title-class">
+              <h3 class="text-center">Trail Balance</h3>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <table
+                  class="table table-hover table-sm w-table table-bordered"
+                >
+                  <tr class="text-center">
+                    <td><b>Total Difference</b></td>
+                    <td><b>Total Debit</b></td>
+                    <td><b>Total Credit</b></td>
+                  </tr>
+                  <tr class="text-center">
+                    <td>{{ grandTotalDr-(-grandTotalCr) }}</td>
+                    <td>{{ grandTotalCr }}</td>
+                    <td>{{ grandTotalDr }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body p-0 m-0">
+            <div
+              class="card border-0 shadow mt-3 px-2 no-shade"
+              *ngFor="let a of repoTrial "
+            >
+              <div class="card-head mt-3 bg-secondary text-light py-2">
+                <h5 class="text-left inner-heading">
+                  A/C Head: {{ a.adCateAcc }}
+                </h5>
+              </div>
+
+              <div class="card-body p-0 m-0">
+                <div class="table-responsive-sm">
+                  <table
+                    class="table table-hover table-sm w-table table-bordered"
+                  >
+                    <thead>
+                      <tr>
+                        <th style="width: 10%; text-align: left">Date</th>
+                        <th style="width: 30%; text-align: left">Name</th>
+                        <th style="width: 10%; text-align: right">Debit</th>
+                        <th style="width: 10%; text-align: right">Credit</th>
+                        <!-- <th style="width: 10%;  text-align: right;">Last Bill </th>
+                                  <th style="width: 10%;  text-align: right;">Last Bill Amount </th>
+                                  <th style="width: 10%;  text-align: right;">Last Payment </th>
+                                  <th style="width: 10%;  text-align: right;">Last Payment Amount </th>
+                       -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let c of a.accounts" (click)="partyLedger(c)">
+                        <td style="width: 10%; text-align: left">
+                          {{ c.eDate | date : "dd-MM-yyyy" }}
+                        </td>
+                        <td
+                          style="width: 30%; text-align: left; font-weight: 600"
+                        >
+                          {{ c.title }}
+                        </td>
+                        <td style="width: 10%; text-align: right">
+                          {{ c.debit }}
+                        </td>
+                        <td style="width: 10%; text-align: right">
+                          {{ c.credit  }}
+                        </td>
+                        <!-- <td style="width: 10%; text-align: right;">{{c.lastBillDate| date:'dd-MM-yyyy'}}</td>
+                          <td style="width: 10%; text-align: right;">{{c.lastBillAmount}}</td>
+                          <td style="width: 10%; text-align: right;">{{c.lastPaymentDate| date:'dd-MM-yyyy'}}</td>
+                          <td style="width: 10%; text-align: right;">{{c.lastPaymentAmount}}</td> -->
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <td><b>TOTAL</b></td>
+                        <td class="text-right">
+                          <b
+                            >Difference:
+                            {{ a.debitSum + a.ceditSum | number : "1.0-0" }}</b
+                          >
+                        </td>
+                        <td class="text-right" style="text-align: right;">
+                          <b>{{ a.debitSum | number : "1.0-0" }}</b>
+                        </td>
+                        <td class="text-right" style="text-align: right;">
+                          <b>{{ a.ceditSum | number : "1.0-0" }}</b>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isData">
+        <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="container-fluid mt-2 py-2">
+    <div class="card " style="background-color: rgba(217, 217, 217, 1);">
+        <div class="flex-row">
+            <div class="back d-flex gap-2" >
+                <a (click)="back()">
+                    <img src="./assets/imgs/back.svg" height="25px" width="25px" alt="" class="back">
+                </a>
+                <h4 style="text-align: right;">Daily Cash Report</h4>
+            </div>
+            <div class="heading" style="flex: 2; align-self: flex-end">
+            </div>
+
+        </div>
+        <div class="form-group search-div mb-2">
+            <input type="text" class="form-control search" placeholder="Search..." [(ngModel)]="filterTerm">
+        </div>
+
+    </div>
+
+    <div class="row my-2">
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2"></div>
+        <div class="col-2">
+          <button class="btn btn-success float-right mr-0" 
+                style="padding:8px"
+                    (click)="exportPdf()">
+                    <img src="./assets/imgs/pdf.svg" height="20px" width="20px" alt="">
+                   
+                  </button>
+        </div>
+      </div>
+      <div id="print">
+    <ul class="list-group m-0 p-0" >
+        <li class="list-group-item p-0 m-0" *ngFor="let data of dcRepo " style="background: #E6ECF5;">
+            <h5 class="d-heading text-center">
+                {{data.eDate | date:'dd-MM-yyyy'}}
+            </h5>
+
+
+            <div class="row mx-1">
+                <div class="table-responsive">
+        
+                    <table class="table table-hover table-sm w-table table-bordered" >
+                      <tbody>
+                        <tr>
+                          <td><b>Today's Cash</b></td>
+                          <td style="text-align: right;"><b>{{data.todayCash}}</b></td>
+                        </tr>
+                        <tr>
+                          <td><b>Today's Cash in Credit Bills</b></td>
+                          <td style="text-align: right;"><b>{{data.crCash}}</b></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </div>
+                
+            </div>
+
+            <div class="card shadow border-0"
+            style="background: #E6ECF5;" *ngFor="let b of data['party']">
+                <div class="row my-2" style="height: 60px; width:100%;  margin: auto">
+                    <ng-container >
+                        <div class="row">
+                            <h5 class="text-center " >
+                                {{b.transType}}
+                        </h5>
+                            <br>
+                            <h6 class="text-right">
+                                <strong>
+                                Total: {{b.totalDr}} Dr. ||  {{b.totalCr}} Cr.
+                            </strong>
+                            </h6>
+                            
+                        </div>
+                       
+                        <span class="text-right">
+                           
+                        </span>
+                    </ng-container>
+                 
+               
+                
+                    
+                </div>
+
+
+
+                <div class="table-responsive">
+                    <table class="table table-hover 
+                    table-sm w-table 
+                    table-bordered"
+                        >
+                        <thead>
+                            <tr>
+                                <th style="text-align: left; width: 50%">Party</th>
+                                <th style="text-align: right; width: 25%">Debit</th>
+                                <th style="text-align: right; width: 25%">Credit</th>
+
+                                <!-- <th>Net</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of b.bills">
+                                <td style="text-align: left; width: 50%"><b>{{c.accNameDr}} {{c.accNameCr}}</b></td>
+                                <td style="text-align: right; width: 25%;">{{c.accAmountDr}}</td>
+                                <td style="text-align: right; width: 25%;">{{c.accAmountCr}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            
+            </div>
+            
+            <!-- <p>Cash: </p>
+            <p>Exp: </p>
+            <p>Prev Cash: {{data.prevCash}} </p>
+            <p>PreCash Home: </p> -->
+
+        </li>
+        <ng-container>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <h6 class="text-right text-success">
+                        Total Cash Receive:
+                    </h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="text-right text-success">{{totalCashReceive}}</h6>
+                </div>
+            </div>
+           <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <h6 class="text-right text-danger">
+                        Expenses & Payments:
+                    </h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="text-right text-danger">{{expnPayments}}</h6>
+                </div>
+            </div> 
+    
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <h6 class="text-right text-primary">
+                        Today Cash:
+                    </h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="text-right text-primary">{{totalCashReceive-expnPayments}}</h6> 
+                </div>
+            </div>
+           
+           <span style="height: 2px; width: 100%; right:0; border: 1px solid black"></span>
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <h6 class="text-right">
+                        Previous Cash Home:
+                    </h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="text-right text-success">{{prevCash}}</h6>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-3">
+                    <h6 class="text-right">
+                        Total Cash:
+                    </h6>
+                </div>
+                <div class="col-3">
+                    <h6 class="text-right text-success">{{(totalCashReceive-expnPayments)+prevCash}}</h6>
+                </div>
+            </div> 
+        </ng-container>
+    </ul>
+</div>
+        
+ 
+  
+
+
+
+</div>

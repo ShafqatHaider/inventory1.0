@@ -1,0 +1,135 @@
+<div class="container-fluid mt-2 py-2">
+  <app-snakbar *ngIf="!isData"></app-snakbar>
+  <div class="card">
+    <div class="card" style="background-color: rgba(217, 217, 217, 1)">
+      <div class="flex-row">
+        <div class="col-md-4">
+          <div class="d-flex gap-2">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left fs-4 mt-1"></i>
+            </a>
+            <h4>Bill Wise Purchase Report With ST</h4>
+          </div>
+        </div>
+        <div class="col-md-8 mb-2">
+          <div class="row">
+            <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+              <div class="form-group" style="width: 100%">
+                <label>From</label>
+                <input type="date" class="form-control" [(ngModel)]="fDate" />
+              </div>
+            </div>
+            <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+              <div class="form-group" style="width: 100%">
+                <label>To</label>
+                <input type="date" class="form-control" [(ngModel)]="tDate" />
+              </div>
+            </div>
+
+            <div class="col-sm-6 col-md-2">
+              <div class="row mt-4">
+                <button
+                  class="eas-button eas-btn-white no-print form-control text-light"
+                  (click)="getReport()"
+                  style="width: 45%; background-color: rgba(27, 143, 252, 1)"
+                >
+                  Get
+                </button>
+                <button
+                  class="eas-button eas-btn-white no-print form-control"
+                  (click)="createReportPdf()"
+                  style="width: 45%; background-color: rgba(252, 226, 31, 1)"
+                >
+                  Export
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body" style="width: 100%">
+      <ng-container *ngIf="isData">
+        <div
+          class="card border-0 shadow mt-3"
+          style="background: #e6ecf5"
+          *ngFor="let a of purchaseBillWise"
+        >
+          <div class="card-head mt-3">
+            <div class="table-responsive">
+              <table class="table table-hover table-sm w-table table-bordered">
+                <tbody>
+                  <tr>
+                    <td><b>Bill No.</b></td>
+                    <td style="text-align: right">
+                      <b> {{ a.smId }}</b>
+                    </td>
+                    <td><b>Date: </b></td>
+                    <td style="text-align: right">
+                      <b>{{ a.eDate | date : "dd-MM-yyyy" }}</b>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><b>Party Name</b></td>
+                    <td style="text-align: right">
+                      <b>{{ a.partyName }}</b>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card-body p-0 m-0">
+            <div class="table-responsive-sm">
+              <table class="table table-hover table-sm w-table table-bordered">
+                <thead>
+                  <tr>
+                    <th style="width: 50%; text-align: left">Item</th>
+                    <th style="width: 10%; text-align: right">Qty</th>
+                    <th style="width: 10%; text-align: right">Rate</th>
+                    <th style="width: 10%; text-align: right">Sale Tax</th>
+                    <th style="width: 10%; text-align: right">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let c of a.bills"
+                    style="text-decoration: none; cursor: pointer"
+                  >
+                    <td style="width: 50%; text-align: left">
+                      {{ c.itemName }}
+                    </td>
+                    <td style="width: 10%; text-align: right">{{ c.qty }}</td>
+                    <td style="width: 10%; text-align: right">{{ c.rate }}</td>
+                    <td style="width: 10%; text-align: right">
+                      {{ c.saleTaxAmount }}
+                    </td>
+                    <td style="width: 10%; text-align: right">
+                      {{ c.amount + c.saleTaxAmount }}
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="2"><b>TOTAL</b></td>
+                    <td style="width: 20%; text-align: right">
+                      <b>{{ a.totalBill }}</b>
+                    </td>
+                    <td style="width: 20%; text-align: right">
+                      <b>{{ a.totalMargin }}</b>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isData">
+        <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+      </ng-container>
+    </div>
+  </div>
+</div>

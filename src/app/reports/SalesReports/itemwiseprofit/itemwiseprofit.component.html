@@ -1,0 +1,193 @@
+<div class="container-fluid mt-2 py-2">
+  <app-snakbar *ngIf="!isData"></app-snakbar>
+  <div class="card">
+    <div class="card-head py-2 px-1" style="background: #e5f2fe">
+      <div class="flex-row">
+        <div class="back no-print">
+          <a (click)="location.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="heading">
+          <h5 class="text-center">Item Wise Profit Report</h5>
+        </div>
+      </div>
+      <div class="row px-2">
+        <div class="col-12 col-sm-3 col-lg-3">
+          <div class="row">
+            <label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  #today
+                  (change)="todayChanged($event)"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{ !isToday ? "Date Filter" : "Select Date" }}
+                </label>
+              </div>
+            </label>
+            <div class="col-12">
+              <div class="form-group">
+                <input
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="fDate"
+                  [ngClass]="{ disabled: !isToday }"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-2 col-lg-3">
+          <div class="row">
+            <label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  #periodic
+                  (change)="periodicChanged($event)"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{ !isPeriodic ? "Periodic Filter" : "Select Period" }}
+                </label>
+              </div>
+            </label>
+            <div class="col-6 col-sm-6 col-lg-6">
+              <input
+                type="date"
+                class="form-control"
+                [(ngModel)]="fDate"
+                [ngClass]="{ disabled: !isPeriodic }"
+              />
+            </div>
+            <div class="col-6 col-sm-6 col-lg-6">
+              <input
+                type="date"
+                class="form-control"
+                [(ngModel)]="tDate"
+                [ngClass]="{ disabled: !isPeriodic }"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-4 col-lg-4">
+          <label
+            ><div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                #filter
+                (change)="filterChanged($event)"
+              />
+              <label class="form-check-label" for="flexCheckDefault">
+                {{
+                  !isFilter
+                    ? "Filter By Category Account"
+                    : "Select Category Account"
+                }}
+              </label>
+            </div></label
+          >
+          <ng-select
+            [ngClass]="{ disabled: !isFilter }"
+            [appendTo]="'body'"
+            [items]="cate"
+            bindLabel="title"
+            bindValue="cateID"
+            (change)="onSelectCategory($event)"
+            required
+          >
+          </ng-select>
+        </div>
+        <div class="col-12 col-sm-2 col-lg-2">
+          <div class="row mt-2 text-center">
+            <button
+              class="eas-button eas-btn-white mt-4 no-print"
+              (click)="getReport()"
+              style="width: 45%"
+            >
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </button>
+            <button
+              class="eas-button eas-btn-white mt-4 no-print"
+              (click)="createReportPdf()"
+              style="width: 45%"
+            >
+              PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body" style="width: 100%">
+      <ng-container *ngIf="isData">
+        <div class="table-responsive-sm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let header of headers"
+                  (click)="onSort(header.toLowerCase())"
+                >
+                  {{ header }}
+                  <span *ngIf="sortColumn === header.toLowerCase()">
+                    <i
+                      class="fa-solid fa-sort"
+                      *ngIf="sortDirection === 'desc'"
+                    ></i>
+                    <i
+                      class="fa-solid fa-sort"
+                      *ngIf="sortDirection === 'asc'"
+                    ></i>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of rows">
+                <td style="width: 40%; text-align: left">{{ c.codeName }}</td>
+                <td style="width: 10%; text-align: right">{{ c.soldQty }}</td>
+                <td style="width: 10%; text-align: right">{{ c.returnQty }}</td>
+                <td style="width: 10%; text-align: right">{{ c.netqty }}</td>
+                <td style="width: 10%; text-align: right">{{ c.saleAmt }}</td>
+                <td style="width: 10%; text-align: right">{{ c.costAmt }}</td>
+                <td style="width: 10%; text-align: right">{{ c.margin }}</td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td style="width: 10%; text-align: right">
+                  {{ totalSoldQty }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ totalReturnedQty }}
+                </td>
+                <td style="width: 10%; text-align: right">{{ totalNetQty }}</td>
+                <td style="width: 10%; text-align: right">
+                  {{ totalSaleAmt }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ totalCostAmt }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  <b>{{ tProfit }}</b>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isData">
+        <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+      </ng-container>
+    </div>
+  </div>
+</div>

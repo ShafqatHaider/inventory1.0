@@ -1,0 +1,303 @@
+<div class="container-fluid mt-2 py-2">
+  <app-snakbar *ngIf="!isData"></app-snakbar>
+  <div class="card">
+    <div class="card p-2" style="background-color: rgba(217, 217, 217, 1)">
+      <div class="d-flex align-items-center">
+        <div class="col-md-2">
+          <div class="d-flex gap-2">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left fs-4 mt-1"></i>
+            </a>
+            <h4>Item Ledger</h4>
+          </div>
+        </div>
+        <div class="col-md-10 mb-2">
+          <div class="row">
+            <div class="col-6 col-sm-2 col-lg-2">
+              <div class="form-group" style="width: 100%">
+                <label>From</label>
+                <input type="date" class="form-control" [(ngModel)]="fDate" />
+              </div>
+            </div>
+            <div class="col-6 col-sm-2 col-lg-2">
+              <div class="form-group" style="width: 100%">
+                <label>To</label>
+                <input type="date" class="form-control" [(ngModel)]="tDate" />
+              </div>
+            </div>
+            <div class="col-12 col-sm-3 col-lg-3">
+              <div class="form-group" style="width: 100%">
+                <label for="">Select Item</label>
+                <ng-select
+                  [appendTo]="'body'"
+                  [(ngModel)]="cid"
+                  [items]="items"
+                  bindLabel="codeName"
+                  bindValue="cid"
+                  (change)="onSelectItem($event)"
+                  required
+                >
+                </ng-select>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-3 col-lg-3">
+              <div class="form-group" style="width: 100%">
+                <label for="">Transaction Type</label>
+                <ng-select
+                  [appendTo]="'body'"
+                  [items]="ttype"
+                  bindLabel="transType"
+                  (change)="onSelectType($event)"
+                  required
+                >
+                </ng-select>
+              </div>
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-2">
+              <div class="row mt-4">
+                <button
+                  class="eas-button eas-btn-white  no-print form-control text-light"
+                  (click)="getReport()"
+                  style="width: 45%;background-color: rgba(27, 143, 252, 1);"
+                >
+                  Get
+                </button>
+                <button
+                  class="eas-button eas-btn-white  no-print form-control"
+                  (click)="createReportPdf()"
+                  style="width: 45% ; background-color: rgba(252, 226, 31, 1);
+;"
+                >
+                  Export
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- <div class="card-head py-2 px-1" style="background: #E5F2FE;">
+        <div class="flex-row">
+          <div class="back no-print">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            
+         </div>
+         <div class="heading">
+           <h5 class="text-center">Item Ledger</h5>
+        </div>
+       
+    </div>
+        <div class="row">
+
+      <div class="col-6 col-sm-2 col-lg-2">
+          <div class="form-group"  style="width: 100%;">
+              <label>From</label>
+          <input type="date" class="form-control" [(ngModel)]="fDate">
+          </div>
+      </div>
+         <div class="col-6 col-sm-2 col-lg-2">
+          <div class="form-group"  style="width: 100%;">
+              <label>To</label>
+              <input type="date" class="form-control" [(ngModel)]="tDate">
+             </div>
+         </div>
+         <div class="col-12 col-sm-3 col-lg-3">
+          <div class="form-group" style="width: 100%;">
+              <label for="">Select Item</label>
+              <ng-select 
+              [appendTo]="'body'"
+              [(ngModel)]="cid"
+              [items]="items" 
+              bindLabel="codeName" 
+              bindValue="cid"
+              
+              (change)="onSelectItem($event)" required
+              >
+            </ng-select>    
+         
+          </div>
+         </div>
+
+         <div class="col-6 col-sm-3 col-lg-3">
+          <div class="form-group" style="width: 100%;">
+              <label for="">Transaction Type</label>
+              <ng-select 
+              [appendTo]="'body'"
+              [items]="ttype" 
+              bindLabel="transType" 
+              (change)="onSelectType($event)" required
+              >
+            </ng-select>    
+         
+          </div>
+         </div>
+         
+      <div class="col-6 col-sm-2 col-lg-2">
+          <div class="row mt-2">
+
+              <button  class="eas-button eas-btn-white mt-4 no-print" (click)="getReport()"  style="width: 45%;">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                  </button>
+                  <button class="eas-button eas-btn-white mt-4 no-print" (click)="createReportPdf()"  style="width: 45%;">
+                     PDF
+                      </button>
+          </div>
+         
+
+      </div>
+      </div>
+      </div> -->
+
+    <div class="card-body" style="width: 100%">
+      <!-- <ng-container *ngIf="isData">
+        <div class="text-center">
+          <h3>{{ brandName }}</h3>
+        </div>
+        <div class="table-responsive-sm">
+          <table class="table">
+            <thead>
+              <tr>
+                <th
+                  *ngFor="let header of headers"
+                  (click)="onSort(header.toLowerCase())"
+                >
+                  {{ header }}
+                  <span *ngIf="sortColumn === header.toLowerCase()">
+                    <i
+                      class="bi bi-caret-down-fill"
+                      *ngIf="sortDirection === 'desc'"
+                    ></i>
+                    <i
+                      class="bi bi-caret-up-fill"
+                      *ngIf="sortDirection === 'asc'"
+                    ></i>
+                  </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bled of rows">
+                <td style="font-weight: 600; width: 10%; text-align: left">{{bled.lg_date | date:'dd/MM/yy'}}</td>
+                <td style="width: 10%; text-align: left">{{ bled.lg_type }}</td>
+                <td style="width: 30%; text-align: left">{{ bled.narat }}</td>
+                <td style="text-align: right; width: 10%">{{ bled.qtyIn }}</td>
+                <td style="text-align: right; width: 10%">{{ bled.qtyOut }}</td>
+                <td style="text-align: right; width: 10%">{{ bled.cost }}</td>
+                <td style="text-align: right; width: 10%">
+                  {{ bled.salePrice }}
+                </td>
+                <td style="text-align: right; width: 10%">
+                  <strong> {{ bled.balance }}</strong>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><strong> Total </strong></td>
+                <td style="text-align: right">
+                  <strong>{{ tIn }}</strong>
+                </td>
+                <td style="text-align: right">
+                  <strong>{{ tOut }}</strong>
+                </td>
+                <td></td>
+                <td></td>
+                <td style="text-align: right">
+                  <strong>{{ tBal }}</strong>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </ng-container> -->
+
+
+      <ng-container  *ngIf="isData">
+        <div class="container-fluid">
+          <div class="mt-3">
+            <div class="border border-black p-3">
+              <div class="d-flex justify-content-between mt-3">
+                  <div class="d-flex gap-2">
+                      <h3>Item Name:</h3>
+                      <p class="mb-4  fs-4 text-center" style="border-bottom:3px solid black ; width: 150px;">{{ brandName }}</p>
+                  </div>
+                <div class="d-flex gap-5 flex-wrap">
+                  <p class="fw-bold fs-5">Date: {{pdate | date}}</p>
+                  <p class="fw-bold fs-5">From: {{fDate}}</p>
+                  <p class="fw-bold fs-5">To: {{tDate}}</p>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h4 class="mt-3"></h4>
+                </div>
+                
+                <table
+                  class="table table-responsive table-bordered border-black mt-3"
+                >
+                <thead>
+                  <tr>
+                    <th
+                      *ngFor="let header of headers"
+                      (click)="onSort(header.toLowerCase())"
+                    >
+                      {{ header }}
+                      <span *ngIf="sortColumn === header.toLowerCase()">
+                        <i
+                          class="bi bi-caret-down-fill"
+                          *ngIf="sortDirection === 'desc'"
+                        ></i>
+                        <i
+                          class="bi bi-caret-up-fill"
+                          *ngIf="sortDirection === 'asc'"
+                        ></i>
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bled of rows">
+                    <td style="font-weight: 600; width: 10%; text-align: left">{{bled.lg_date | date:'dd/MM/yy'}}</td>
+                    <td style="width: 10%; text-align: left">{{ bled.lg_type }}</td>
+                    <td style="width: 30%; text-align: left">{{ bled.narat }}</td>
+                    <td style="text-align: right; width: 10%">{{ bled.qtyIn }}</td>
+                    <td style="text-align: right; width: 10%">{{ bled.qtyOut }}</td>
+                    <td style="text-align: right; width: 10%">{{ bled.cost }}</td>
+                    <td style="text-align: right; width: 10%">
+                      {{ bled.salePrice }}
+                    </td>
+                    <td style="text-align: right; width: 10%">
+                      <strong> {{ bled.balance }}</strong>
+                    </td>
+                  </tr>
+                </tbody>
+                  <tfoot>
+                    <tr  >
+                      <td colspan="2" ></td>
+                      <td class="fw-bold fs-5" >Total</td>
+                      <td style="text-align: right;"><strong>{{ tIn }}</strong></td>
+                      <td colspan="1" style="text-align: right;"> <strong>{{ tOut }}</strong></td>
+                      <td colspan="2"></td>
+                      <td style="text-align: right;"><strong>{{ tBal }}</strong></td>
+                    </tr>
+                    
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!isData">
+        <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+      </ng-container>
+    </div>
+  </div>
+</div>

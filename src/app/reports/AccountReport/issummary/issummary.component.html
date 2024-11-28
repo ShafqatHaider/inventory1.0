@@ -1,0 +1,147 @@
+<div class="container-fluid mt-2 py-2">
+  <!-- <app-snakbar *ngIf="!isData"></app-snakbar> -->
+  <div class="card">
+      <div class="card " style="background-color: rgba(217, 217, 217, 1);">
+        <div class="flex-row">
+          <div class="col-md-4 "><div class="d-flex gap-2">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left fs-4 mt-1"></i>
+            </a>
+            <h4>Summarized Income Statement</h4>
+            
+          </div></div>
+          <div class="col-md-8"><div class="row px-2">
+            <div class="col-md-3 col-lg-3 col-sm-6">
+              <div class="row">
+                <label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" #today
+                     >
+                     <!-- (change)="todayChanged($event.target.checked)"  -->
+                    <label class="form-check-label" for="flexCheckDefault">
+                      {{!isToday?"Date Filter":"Select Date"}}
+                    </label>
+                  </div>
+                </label>
+                <div class="col-md-12 col-lg-12 col-sm-6">
+                  <div class="form-group">
+                    <input type="date" class="form-control" [(ngModel)]="fDate"  [ngClass]="{ 'disabled': !isToday }">
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+            <div class="col-md-7 col-lg-7 col-sm-12">
+              <div class="row">
+                <label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" 
+                    #periodic  >
+                    <!-- (change)="periodicChanged($event.target.checked)"  -->
+                    <label class="form-check-label" for="flexCheckDefault">
+                      {{!isPeriodic?"Periodic Filter":"Select Period"}}
+                    </label>
+                  </div>
+                </label>
+                <div class="col-md-6 col-lg-6 col-sm-3">
+            <input type="date" class="form-control mb-1" [(ngModel)]="fDate"  [ngClass]="{ 'disabled': !isPeriodic }">
+                 
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-3">
+               
+                    <input type="date" class="form-control mb-1" [(ngModel)]="tDate"  [ngClass]="{ 'disabled': !isPeriodic }">
+                  
+                </div>
+              </div>
+            </div>
+        
+           
+           
+       
+
+        <div class="col-6 col-sm-6 col-md-2">
+          <div class="row mt-4">
+            <button
+              class="eas-button eas-btn-white  no-print form-control text-light"
+              (click)="getReport()" 
+              style="width: 45%;background-color: rgba(27, 143, 252, 1);"
+            >
+              Get
+            </button>
+            <button
+              class="eas-button eas-btn-white  no-print form-control"
+              (click)="exportPdf()"
+              style="width: 45% ; background-color: rgba(252, 226, 31, 1);
+;"
+            >
+              Export
+            </button>
+          </div>
+        </div>
+        </div></div>
+        </div>
+        
+        
+      </div>
+      
+      <div class="card-body" style="width: 100%;">
+        <div class="row  title-class">
+          <h3 class="text-center">Summarized Income Statement</h3>
+        </div>
+         <ng-container *ngIf="isData">
+          <div class="table-responsive-sm">
+            <table>
+              <tr>
+                <th>Particulars</th>
+                <th>Amount</th>
+                <th>Amount</th>
+              </tr>
+              <tr>
+                <td><b>Previous Capital</b> as on {{tillDate|date:'dd-MM-yyyy'}}</td>
+                <td class="empty-cell"></td>
+                <td>{{ preCapital }}</td>
+              </tr>
+              <tr>
+                <td><b>SALES</b></td>
+                <td>{{ sales }}</td>
+                <td class="empty-cell"></td>
+              </tr>
+              <tr>
+                <td><b>C.G.S</b></td>
+                <td>{{ cgs }}</td>
+                <td class="empty-cell"></td>
+              </tr>
+              <tr>
+                <td><b>Gross Profit</b></td>
+                <td>{{ grossProfit }}</td>
+                <td class="empty-cell"></td>
+              </tr>
+              <tr>
+                <td><b>Less Expenses</b></td>
+                <td>{{ expenses }}</td>
+                <td class="empty-cell"></td>
+              </tr>
+              <tr>
+                <td><b>Net Profit</b></td>
+                <td>{{ netProfit }}</td>
+                <td class="empty-cell"></td>
+              </tr>
+              <tr>
+                <td><b>Net Capital</b></td>
+                <td class="empty-cell"></td>
+                <td>{{ netCapital }}</td>
+              </tr>
+            </table>
+          </div>
+    
+         </ng-container>
+         <ng-container *ngIf="!isData">
+          <h2 class="text-center" style="color:#cecece">NO ANY DATA</h2>
+         </ng-container>
+      </div>
+  </div>
+</div>
+
+
+   
+  

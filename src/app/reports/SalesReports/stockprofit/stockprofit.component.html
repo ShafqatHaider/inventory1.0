@@ -1,0 +1,302 @@
+<div class="container-fluid mt-2 py-2">
+  <app-snakbar *ngIf="!isData"></app-snakbar>
+  <div class="card">
+    <!-- <div class="card-head py-2 px-1" style="background: #e5f2fe">
+      <div class="flex-row">
+        <div class="back no-print">
+          <a (click)="location.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+        </div>
+        <div class="heading">
+          <h5 class="text-center">Stock Profit Report</h5> -->
+      <!-- <div class="card-head py-2 px-1" style="background: #E5F2FE;">
+        <div class="flex-row">
+          <div class="back no-print">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            
+         </div>
+         <div class="heading">
+           <h5 class="text-center">Stock Profit Report</h5>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+          <div class="form-group" style="width: 100%;">
+            <label>From</label>
+            <input type="date" class="form-control" [(ngModel)]="fDate">
+          </div>
+        </div>
+        <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+          <div class="form-group" style="width: 100%;">
+            <label>To</label>
+            <input type="date" class="form-control" [(ngModel)]="tDate">
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-12 col-lg-2 col-md-2">
+          <div class="row mt-2">
+            <div class="col-12">
+              <button class="eas-button eas-btn-white mt-4 no-print" (click)="getReport()" style="width: 50%">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+              <button class="eas-button eas-btn-white mt-4 no-print" (click)="createReportPdf()" style="width: 50%">
+                PDF
+              </button>
+            </div>
+          </div>
+         
+
+      </div>
+      </div>
+      </div> -->
+      
+
+      <div class="card" style="background-color: rgba(217, 217, 217, 1)">
+        <div class="flex-row">
+          <div class="col-md-3">
+            <div class="d-flex gap-2">
+              <a (click)="location.back()">
+                <i class="fa-solid fa-arrow-left fs-4 mt-1"></i>
+              </a>
+              <h4>Stock Profit Report</h4>
+            </div>
+          </div>
+          <div class="col-md-9 mb-2">
+            <div class="row">
+
+              <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+                  <div class="form-group"  style="width: 100%;">
+                      <label>From</label>
+                  <input type="date" class="form-control" [(ngModel)]="fDate">
+                  </div>
+              </div>
+                 <div class="col-sm-6 col-6 col-md-5 col-lg-5">
+                  <div class="form-group"  style="width: 100%;">
+                      <label>To</label>
+                      <input type="date" class="form-control" [(ngModel)]="tDate">
+                     </div>
+                 </div>
+                
+                 <div class="col-sm-6 col-md-2">
+                  <div class="row mt-4">
+                    <button
+                    class="eas-button eas-btn-white no-print form-control text-light"
+                    (click)="getReport()"
+                    style="width: 45%; background-color: rgba(27, 143, 252, 1)"
+                    >
+                    Get
+                   </button>
+                 <button
+                 class="eas-button eas-btn-white no-print form-control"
+                 (click)="createReportPdf()"
+                   style="width: 45%; background-color: rgba(252, 226, 31, 1)"
+                 >
+                 Export
+                 </button>
+               </div>
+             </div>
+              </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+      <div class="card-body" style="width: 100%;">
+         
+         <ng-container *ngIf="isData">
+
+          <div class="card border-0 shadow mt-3"   >
+            <div class="card-head mt-3 text-center">
+             <div class="table-responsive">
+        
+        <table class="table table-hover table-sm w-table table-bordered" >
+          <tbody>
+            <tr>
+              <td><b>Total Amount</b></td>
+              <td style="text-align: right;"><b>{{tAmt}}</b></td>
+            </tr>
+            <tr>
+              <td><b>Total Purchase</b></td>
+              <td style="text-align: right;"><b>{{cgs}}</b></td>
+            </tr>
+            <tr>
+              <td><b>Total Margin</b></td>
+              <td style="text-align: right;"><b>{{tmAmt}}</b></td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+              </div>
+             
+            <div class="card-body p-0 m-0" >
+              
+              <div class="table-responsive-sm">
+          
+                <table class="table table-hover table-sm w-table table-bordered">
+                  <thead>
+                
+                      <tr>
+                        <th style="width: 30%; text-align: left">ٰItem name</th>
+                        <th style="width: 10%; text-align: right">Sale Rate</th>
+                        <th style="width: 10%; text-align: right">Purchase Rate</th>
+                        <th style="width: 10%; text-align: right">Qty</th>
+                        <th style="width: 10%; text-align: right">Sale Amount</th>
+                        <th style="width: 10%; text-align: right">CGS</th>
+                        <th style="width: 10%; text-align: right">Margin</th>
+                        <th style="width: 10%; text-align: right">Margin Amt</th>
+                    </tr>
+                      
+                  </thead>
+                  <tbody>
+                    <!-- <tr *ngFor="let p of sProfit | filter: filterTerm"> -->
+                      <tr *ngFor="let p of sProfit ">
+                      <td style="width: 30%; text-align: left"><strong>{{p.codeName}}</strong></td>
+                      <td style="width: 10%; text-align: right">{{p.saleRate}}</td>
+                      <td style="width: 10%; text-align: right">{{p.costRate}}</td>
+                      <td style="width: 10%; text-align: right">{{p.itemSold}}</td>
+                      <td style="width: 10%; text-align: right">{{p.saleAmount}}</td>
+                      <td style="width: 10%; text-align: right">{{p.costRate*p.itemSold}}</td>
+                      <td style="width: 10%; text-align: right">{{p.itemMargin}}</td>
+                      <td style="width: 10%; text-align: right">{{p.itemMarginAmt}}</td>
+                      
+                  </tr>
+        
+                  </tbody>
+                  
+                </table>
+              </div>
+            </div> 
+          </div>
+         </ng-container>
+         <ng-container *ngIf="!isData">
+          <h2 class="text-center" style="color:#cecece">NO ANY DATA</h2>
+         </ng-container>
+      </div>
+    </div>
+  </div>
+
+<!-- <div class="card-body" style="width: 100%;">
+  <ng-container *ngIf="isData">
+    <div class="card border-0 shadow mt-3">
+      <div class="card-head mt-3 text-center">
+        <div class="table-responsive">
+          <table class="table table-hover table-sm w-table table-bordered">
+            <tbody>
+              <tr>
+                <td><b>Total Amount</b></td>
+                <td style="text-align: right;"><b>{{tAmt}}</b></td>
+              </tr>
+              <tr>
+                <td><b>Total Purchase</b></td>
+                <td style="text-align: right;"><b>{{cgs}}</b></td>
+              </tr>
+              <tr>
+                <td><b>Total Margin</b></td>
+                <td style="text-align: right;"><b>{{tmAmt}}</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-body p-0 m-0">
+        <div class="table-responsive-sm">
+          <table class="table table-hover table-sm w-table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 30%; text-align: left">ٰItem name</th>
+                <th style="width: 10%; text-align: right">Sale Rate</th>
+                <th style="width: 10%; text-align: right">Purchase Rate</th>
+                <th style="width: 10%; text-align: right">Qty</th>
+                <th style="width: 10%; text-align: right">Sale Amount</th>
+                <th style="width: 10%; text-align: right">CGS</th>
+                <th style="width: 10%; text-align: right">Margin</th>
+                <th style="width: 10%; text-align: right">Margin Amt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of sProfit">
+                <td style="width: 30%; text-align: left"><strong>{{p.codeName}}</strong></td>
+                <td style="width: 10%; text-align: right">{{p.saleRate}}</td>
+                <td style="width: 10%; text-align: right">{{p.costRate}}</td>
+                <td style="width: 10%; text-align: right">{{p.itemSold}}</td>
+                <td style="width: 10%; text-align: right">{{p.saleAmount}}</td>
+                <td style="width: 10%; text-align: right">{{p.costRate*p.itemSold}}</td>
+                <td style="width: 10%; text-align: right">{{p.itemMargin}}</td>
+                <td style="width: 10%; text-align: right">{{p.itemMarginAmt}}</td>
+              </tr>
+              <tr>
+                <td><b>Total Purchase</b></td>
+                <td style="text-align: right">
+                  <b>{{ cgs }}</b>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Total Margin</b></td>
+                <td style="text-align: right">
+                  <b>{{ tmAmt }}</b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-body p-0 m-0">
+        <div class="table-responsive-sm">
+          <table class="table table-hover table-sm w-table table-bordered">
+            <thead>
+              <tr>
+                <th style="width: 30%; text-align: left">ٰItem name</th>
+                <th style="width: 10%; text-align: right">Sale Rate</th>
+                <th style="width: 10%; text-align: right">Purchase Rate</th>
+                <th style="width: 10%; text-align: right">Qty</th>
+                <th style="width: 10%; text-align: right">Sale Amount</th>
+                <th style="width: 10%; text-align: right">CGS</th>
+                <th style="width: 10%; text-align: right">Margin</th>
+                <th style="width: 10%; text-align: right">Margin Amt</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of sProfit">
+                <td style="width: 30%; text-align: left">
+                  <strong>{{ p.codeName }}</strong>
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.saleRate }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.costRate }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.itemSold }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.saleAmount }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.costRate * p.itemSold }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.itemMargin }}
+                </td>
+                <td style="width: 10%; text-align: right">
+                  {{ p.itemMarginAmt }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!isData">
+    <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+  </ng-container>
+</div> -->

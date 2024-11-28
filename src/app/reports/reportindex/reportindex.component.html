@@ -1,0 +1,215 @@
+<div class="container-fluid px-3 py-3">
+  <div class="menu">
+ 
+    <div class="row g-0">
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="partyLedger()"
+        >
+          <!-- selectParty()  -->
+          <i class="fa-solid fa-user-group"></i>
+          <br />
+          Party Ledger
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="trailBal()"
+        >
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          <br />
+          Trial Balance
+        </button>
+      </div>
+
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="incomeStatement()"
+        >
+          <i class="fa-solid fa-money-bill-1-wave"></i>
+          <br />
+          Income Statement
+        </button>
+      </div>
+
+    </div>
+    <div class="row g-0">
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="dbReport()"
+        >
+          <i class="fa-solid fa-cash-register"></i>
+          <br />
+          Daily Report
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="itemLedger()"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
+          <br />
+          Item Ledger
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="stockList()"
+        >
+          <i class="fa-solid fa-cubes"></i>
+          <br />
+          Stock List
+        </button>
+      </div>
+    
+    </div>
+    <div class="row g-0">
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="bcc()"
+        >
+          <i class="fa-solid fa-chart-simple"></i>
+          <br />
+          BCC Report
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="SaleItemParty()"
+        >
+          <i class="fa-solid fa-scale-unbalanced"></i>
+          <br />
+          ItemParty Sale
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="SalePartyItem()"
+        >
+          <i class="fa-solid fa-person-shelter"></i>
+
+          <br />
+          PartyItem Sale
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="SaleBillWise()"
+        >
+          <i class="fa-solid fa-share-from-square"></i>
+          <br />
+          BillWise Sale
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="SaleItemPartyST()"
+        >
+          <i class="fa-solid fa-scale-unbalanced"></i>
+          <br />
+          ItemParty Sale with Sale Tax
+        </button>
+      </div>
+     
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="SaleBillWiseST()"
+        >
+          <i class="fa-solid fa-share-from-square"></i>
+          <br />
+          BillWise Sale with Sale Tax
+        </button>
+      </div>
+    </div>
+    <div class="row g-0">
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="purchaseItemParty()"
+        >
+          <!-- (click)="stockRepo()" -->
+          <i class="fa-solid fa-life-ring"></i>
+          <br />
+          ItemParty Purchase
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="purchasePartyItem()"
+        >
+          <i class="fa-solid fa-arrows-up-to-line"></i>
+          <br />
+          PartyItem Purchase
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="purchaseBillWise()"
+        >
+          <i class="fa-solid fa-arrows-up-to-line"></i>
+          <br />
+          BillWise Purchase
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="PurchaseItemPartyST()"
+        >
+          <!-- (click)="stockRepo()" -->
+          <i class="fa-solid fa-life-ring"></i>
+          <br />
+          ItemParty Purchase With ST
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="PurchasePartyItemST()"
+        >
+          <i class="fa-solid fa-arrows-up-to-line"></i>
+          <br />
+          PartyItem Purchase With ST
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="PurchaseBillWiseST()"
+        >
+          <i class="fa-solid fa-arrows-up-to-line"></i>
+          <br />
+          BillWise Purchase With ST
+        </button>
+      </div>
+      <div class="col-3 g-0">
+        <button
+          class="btn btn-reports btn-secondary eas-border-radius-0"
+          (click)="stockProfit()"
+        >
+          <i class="fa-solid fa-cubes"></i>
+          <br />
+          Stock Profit
+        </button>
+      </div>
+
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

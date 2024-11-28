@@ -1,0 +1,98 @@
+<div class="container-fluid mt-2 py-2">
+    <div class="card border-0 shadow mx-auto  fixed row-top" style="background: #E6ECF5;">
+     <div class="flex-row">
+        <div class="back" style="margin-left: 5px; flex-grow: 2; align-self: flex-start; margin-left: -20px; align-items: flex-start;">
+          <a (click)="back()">
+            <img src="./assets/imgs/back.svg" height="25px" width="25px" alt="" class="back">
+          </a>
+       </div>
+       <div class="heading">
+         <h5 class="text-center">SALE MAN WISE REPORT</h5>
+      </div>
+      <!-- 
+  </div> -->
+  </div>
+  <div class="form-group search-div">
+    <input type="text" class="form-control search" 
+    placeholder="Search..." 
+    [(ngModel)]="filterTerm"
+    >
+  </div>
+   
+  </div>
+
+    <!-- <div class="card border-0 shadow mt-3"  
+    style="background: #E6ECF5;" *ngFor="let a of smArr | filter: filterTerm" > -->
+    <div class="card border-0 shadow mt-3"  
+    style="background: #E6ECF5;" *ngFor="let a of smArr " >  
+    <div class="card-head mt-3 ">
+        <div class="table-responsive">
+          
+          <table class="table table-hover table-sm w-table table-bordered" >
+            <tbody>
+              <tr>
+                <td style="text-align: left; width:60%;"><b>Sale man</b></td>
+                <td style="text-align: right;width: 40%;"><b>{{a.saleMan}}
+                </b></td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        </div>
+       
+      <div class="card-body p-0 m-0">
+        <div class="table-responsive-sm">
+          <table class="table table-hover table-sm w-table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width: 20%;  text-align: left;">Bill No</th>
+                    <th style="width: 20%; text-align: left;">Date</th>
+                    <th style="width: 20%; text-align: right;">Qty</th>
+                    <th style="width: 20%; text-align: right;">Rate</th>
+                    <th style="width: 20%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let c of a.bills" style="text-decoration:none; cursor: pointer">
+                    <td style="width: 20%; text-align: left;">{{c.smId}}</td>
+                    <td style="width: 20%; text-align: left;">{{c.eDate| date:'dd-MM-yyyy'}}</td>
+                    <td style="width: 20%; text-align: right;">{{c.qty}}</td>
+                    <td style="width: 20%; text-align: right;">{{c.Rate}}</td>
+                    <td style="width: 20%; text-align: right;">{{c.amount}}</td>
+                </tr>
+              
+  
+            </tbody>
+            <!-- <tfoot>
+              <tr>
+                <td rowspan="2">TOTAL</td>
+                <td></td>
+                <td>Cash Received</td>
+                <td>Retrurned</td>
+                <td>Discount</td>
+              </tr>
+              <tr>
+                <td colspan="2"></td>
+                <td></td>
+                <td>{{a.totalCashRece}}</td>
+                <td>{{totalRet}}</td>
+                <td>{{totalDiscount}}</td>
+              </tr>
+            </tfoot> -->
+          </table>
+        </div>
+      </div> 
+    </div>
+  
+  <div id="dimg" style="text-align: center;" hidden>
+    <img src="./assets/imgs/banner.png" alt="" id="img" width="540px" height="220px">
+  </div>
+  </div>
+    <!-- <div class="btn-float">
+      <button class="btn btn-default btn-circle btn-xl btn-lateral"
+       type="button">
+          <i class="material-symbols-outlined pmd-sm">place_item</i></button>
+      </div>
+    </div> -->

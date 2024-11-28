@@ -1,0 +1,168 @@
+<div class="container-fluid mt-2 py-2">
+   
+    <div class="card">
+      <div class="card-head py-2 px-1" style="background: #e5f2fe">
+        <div class="flex-row">
+          <div class="back no-print">
+            <a (click)="location.back()">
+              <i class="fa-solid fa-arrow-left"></i>
+            </a>
+          </div>
+          <div class="heading">
+            <h5 class="text-center">Daybook Report</h5>
+          </div>
+        </div>
+        <div class="row px-2">
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="form-group" style="width: 100%">
+              <label>From</label>
+              <input type="date" class="form-control" [(ngModel)]="fDate" />
+            </div>
+          </div>
+  
+          <div class="col-lg-3 col-md-3 col-sm-6 col-6">
+            <div class="form-group" style="width: 100%">
+              <label>To</label>
+              <input type="date" class="form-control" [(ngModel)]="tDate" />
+            </div>
+          </div>
+  
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="form-group" style="width: 100%">
+              <label>Select Transaction Type</label>
+              <ng-select
+              [items]="ttype"
+              bindLabel="lg_desc"
+              bindValue="lg_type"
+              (change)="onSelectType($event)"
+              ></ng-select>
+            </div>
+          </div>
+  
+          <div class="col-lg-2 col-md-2 col-sm-12">
+            <div class="row mt-2">
+              <button
+                class="eas-button eas-btn-white mt-4 no-print"
+                (click)="getReport()"
+                style="width: 50%"
+              >
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+              <button
+                class="eas-button eas-btn-white mt-4 no-print"
+                (click)="createReportPdf()"
+                style="width: 50%"
+              >
+                PDF
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card-body" style="width: 100%">
+        <app-progress-bar ></app-progress-bar>
+        <ng-container *ngIf="isData">
+          <div class="card border-0 shadow px-2 no-shade">
+            <div class="card-head">
+              <div class="row title-class">
+                <h3 class="text-center">Daily Report</h3>
+              </div>
+            </div>
+  
+            <div class="card-body p-0 m-0">
+              <div
+              class="card border-0 shadow mt-3"
+              
+              *ngFor="let a of dbRepo "
+            >
+            <!-- *ngFor="let a of dbRepo | filter : filterTerm" -->
+              <div class="card-head mt-3 text-center">
+                <h5>{{ a.lg_Date | date : "dd-MM-yyyy" }}</h5>
+                <table class="table table-hover table-sm w-table table-bordered">
+                  <thead>
+                    <tr>
+                      
+                      <th>Total Debit</th>
+                      <th>Total Credit</th>
+                      <th>Total Differnce</th>
+                    </tr>
+                  
+                  </thead>
+                  <tbody>
+                    <tr>
+                  
+                      <td>{{a.dateDrSum}}</td>
+                      <td>{{a.dateCrSum}}</td>
+                      <td>{{a.dateDrSum-a.dateCrSum}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        
+              <div
+                class="card-body p-0 m-0"
+                *ngFor="let b of a['eType'] "
+              >
+              <!-- *ngFor="let b of a['eType'] | filter : filterTerm" -->
+                <div class="table-responsive-sm">
+                  <div class="row m-0 p-0">
+                    <h6 class="text-center">{{ b.ttype }}</h6>
+                    <table class="table table-hover table-sm w-table table-bordered">
+                      <thead>
+                        <tr>
+                          
+                          <th>Total Debit</th>
+                          <th>Total Credit</th>
+                          <th>Total Differnce</th>
+                        </tr>
+                      
+                      </thead>
+                      <tbody>
+                        <tr>
+                      
+                          <td>{{b.tdr}}</td>
+                          <td>{{b.tcr}}</td>
+                          <td>{{b.tdr-b.tcr}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <table class="table table-hover table-sm w-table table-bordered">
+                    <thead>
+                      <tr>
+                        <!-- <th style="width: 10%; text-align: left">Date</th> -->
+                        <th style="width: 30%; text-align: left">A/C Name</th>
+                        <th style="width: 30%; text-align: left">Description</th>
+                        <th style="width: 10%; text-align: left">Folio</th>
+                        <th style="width: 10%; text-align: right">Debit</th>
+                        <th style="width: 10%; text-align: right">Credit</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let c of b.details">
+                        <!-- <td style="width: 10%; text-align: left">
+                          {{ c.lg_Date | date : "dd-MM-yyyy" }}
+                        </td> -->
+                        <td style="width: 30%; text-align: left">{{ c.saccName }}</td>
+                        <td style="text-align: left; width: 30%">{{ c.remarks }}</td>
+                        <td style="text-align: left; width: 10%">{{ c.folio }}</td>
+                        <td style="text-align: right; width: 10%">{{ c.dr }}</td>
+                        <td style="text-align: right; width: 10%">{{ c.cr }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="!isData">
+          <h2 class="text-center" style="color: #cecece">NO ANY DATA</h2>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+  
