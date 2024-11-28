@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountConfigurations } from '../../supportives/AccountConfigurations';
 
 @Component({
   selector: 'app-rbookindex',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './rbookindex.component.scss'
 })
 export class RbookindexComponent {
-
+add(){}
+edit(){}
+delete(){}
+config=AccountConfigurations.receipt
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeindexComponent } from './codeindex.component';
+import { WarehouseIndexComponent } from './warehouse-index.component';
 
-describe('CodeindexComponent', () => {
-  let component: CodeindexComponent;
-  let fixture: ComponentFixture<CodeindexComponent>;
+describe('WarehouseIndexComponent', () => {
+  let component: WarehouseIndexComponent;
+  let fixture: ComponentFixture<WarehouseIndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CodeindexComponent ]
+      declarations: [WarehouseIndexComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CodeindexComponent);
+    fixture = TestBed.createComponent(WarehouseIndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

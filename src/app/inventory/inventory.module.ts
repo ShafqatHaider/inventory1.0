@@ -21,6 +21,12 @@ import { WarehouseComponent } from './warehouse/warehouse.component';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
 import { SaleindexComponent } from './saleindex/saleindex.component';
+import { CodeIndexComponent } from './code-index/code-index.component';
+import { SaleIndexComponent } from './sale-index/sale-index.component';
+import { CategoryIndexComponent } from './category-index/category-index.component';
+import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
+import { UnitIndexComponent } from './unit-index/unit-index.component';
+import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,7 @@ import { SaleindexComponent } from './saleindex/saleindex.component';
     SubcategoryComponent,  
     TypesComponent,  // Include TypesComponent here
     UnitComponent, 
-    WarehouseComponent, SaleindexComponent,
+    WarehouseComponent, SaleindexComponent, CodeIndexComponent, SaleIndexComponent, CategoryIndexComponent, SubcategoryIndexComponent, UnitIndexComponent, WarehouseIndexComponent,
   ],
   imports: [
     CommonModule,

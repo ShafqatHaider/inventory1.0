@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StocktransferComponent } from './stocktransfer.component';
+import { CategoryIndexComponent } from './category-index.component';
 
-describe('StocktransferComponent', () => {
-  let component: StocktransferComponent;
-  let fixture: ComponentFixture<StocktransferComponent>;
+describe('CategoryIndexComponent', () => {
+  let component: CategoryIndexComponent;
+  let fixture: ComponentFixture<CategoryIndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StocktransferComponent ]
+      declarations: [CategoryIndexComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StocktransferComponent);
+    fixture = TestBed.createComponent(CategoryIndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
