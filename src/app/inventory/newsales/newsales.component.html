@@ -1,0 +1,650 @@
+<div class="container-fluid mt-1 py-1" style="height: 100%;">
+  <div
+    class="eas-border-radius-0 bg-primary inner-header text-light nav-wrapper"
+  >
+    <div class="flex-row-back">
+      <a
+        class="nav-item-back"
+        style="cursor: pointer"
+        (click)="location.back()"
+      >
+        <i class="fa-solid fa-arrow-left"></i
+      ></a>
+      <h6 class="text-right my-2 p-2">{{branchName}} | Add New Sale</h6>
+    </div>
+    <div class="flex-row" style="gap: 5px">
+      <button class="btn btn-labeled btn-light border-0 my-2">
+        <span class="btn-label"> </span>
+        Statement
+      </button>
+      <button class="btn btn-labeled btn-light border-0 my-2" (click)="Save()">
+        <span class="btn-label">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </span>
+        Save
+      </button>
+      <button
+        class="btn btn-labeled btn-light border-0 my-2"
+        (click)="printVoucher()"
+      >
+        <span class="btn-label">
+          <i class="fa-solid fa-floppy-disk"></i>
+        </span>
+        Print
+      </button>
+    </div>
+  </div>
+  <div class="mt-3">
+    <div class="  d-flex ">
+      <div class="col-sm-9">
+        <div class=" border-0  px-3 py-1 h-100">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-md-2">
+                  <label for="" class="form-label">Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    [(ngModel)]="eDate"
+                    style="height: 32px; margin-bottom: 0"
+                  />
+                </div>
+                <div class="col-md-2">
+                  <label for="" class="form-label">Bill No.</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="SMain.billNo"
+                    style="height: 32px; margin-bottom: 0"
+                  />
+                </div>
+                <div class="col-md-4" *ngIf="sharedService.globalsalesman">
+                  <label for="" class="form-label">Salesman</label>
+                  <ng-select
+                    [items]="saleManArr"
+                    bindLabel="saleMan"
+                    bindValue="sAccId"
+                    [(ngModel)]="SMain.agentID"
+                    (change)="onChangeSaleMan($event)"
+                    required
+                  ></ng-select>
+                </div>
+                <div class="col-md-2" *ngIf="sharedService.globalpandi ">
+                  <label for="" class="form-label">Pandi</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="height: 32px; margin-bottom: 0"
+                    [(ngModel)]="SMain.pandi"
+                  />
+                </div>
+                <div class="col-md-2" *ngIf="sharedService.globalbuilty">
+                  <label for="" class="form-label">Builty No.</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="height: 32px; margin-bottom: 0"
+                    [(ngModel)]="SMain.biltyNo"
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-4">
+                  <label for="floatingInputGrid" class="form-label"
+                    >Party</label
+                  >
+                  <ng-select
+                    [items]="sParty"
+                    bindLabel="customerName"
+                    bindValue="customerID"
+                    [(ngModel)]="SMain.sAccID"
+                    (change)="CustomerChanged($event)"
+                    required
+                  ></ng-select>
+                </div>
+                <div class="col-md-4">
+                  <label for="" class="form-label">Remarks as cash Party</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    style="height: 32px; margin-bottom: 0"
+                  />
+                </div>
+                <div class="col-md-2">
+                  <label for="" class="form-label">Phone No.</label>
+                  <input
+                    type="text"
+                    class="form-control custom-input"
+                    [(ngModel)]="SMain.contactNo"
+                  />
+                </div>
+                <div class="col-md-2" >
+                  <label for="" class="form-label">Credit Limit</label>
+                  <input
+                    type="text"
+                    class="form-control custom-input"
+                    [(ngModel)]="SMain.creditDays"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 p-1 mt-2">
+       <div class="row mb-2">
+            <div class="col-md-3">
+              <label for="balance" class="form-label">Balance</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="payable"
+                value="{{ receiveable }}"
+                class="form-control text-center"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3">
+              <label for="lsr" class="form-label">L.S.R</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="lsr"
+                disabled
+                [(ngModel)]="lsr"
+                class="form-control text-center"
+              />
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3">
+              <label for="lsr" class="form-label">Stock:</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="lsr"
+                disabled
+                [(ngModel)]="sBal"
+                class="form-control text-center"
+              />
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-md-3">
+              <label for="lsr" class="form-label">Profit:</label>
+            </div>
+            <div class="col-md-9">
+              <input
+                type="text"
+                id="lsr"
+                disabled
+                [(ngModel)]="iProfit"
+                class="form-control text-center"
+              />
+            </div>
+          </div>
+
+         
+      
+      </div>
+      
+    </div>
+    <div class="col-md-12  bg-primary  p-3"></div>
+
+    <div class="col-md-12   p-3">
+      <div class="d-flex">
+        <div class="col-md-3 col-sm-12" style="margin-top: 3px">
+          <label class="form-label fw-bold">Item</label>
+          <ng-select
+            [items]="sItems"
+            bindLabel="itemDescription"
+            bindValue="itemID"
+            [(ngModel)]="SSub.itemID"
+            (change)="itemChanged($event)"
+            required
+            #select
+            class="grid-input"
+            [searchFn]="customSearchFn"
+            [searchable]="true"
+            style="margin-bottom: 0 !important"
+          >
+          </ng-select>
+        </div>
+
+        <div class="col-md-5 col-sm-12 ">
+          <div class="row no-gutters g-0">
+            <div class="col-md-2 col-sm-6 text-center">
+              <div class="form-group">
+                <label class="form-label fw-bold">Unit</label>
+                <input
+                  type="text"
+                  class="form-control text-center"
+                  [(ngModel)]="SSub.measureUnit"
+                  disabled
+                  style="
+                    height: 32px !important;
+                    
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Packet</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                  [(ngModel)]="SSub.packet"
+                  (keyup)="Amt($event)"
+                />
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Packet Qty</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                  [(ngModel)]="SSub.pktQty"
+                  (keyup)="Amt($event)"
+                />
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Qty</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  [(ngModel)]="SSub.qty"
+                  disabled
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div class="col-md-2 col-sm-6 text-center mt-1">
+              <label class="form-label fw-bold">Rate</label>
+              <input
+                type="number"
+                class="form-control text-center"
+                [(ngModel)]="SSub.rate"
+                style="
+                  height: 32px !important;
+                  margin-bottom: 0 !important;
+                "
+                (keyup)="Amt($event)"
+              />
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Discount %</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                   (keyup)="Amt($event)"
+                  [(ngModel)]="SSub.disPer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 p-0">
+          <div class="row no-gutters g-1">
+            
+            
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Discount Rs</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                   (keyup)="Amt($event)" 
+                  [(ngModel)]="SSub.disRS"
+                />
+              </div>
+            </div>
+            <div class="col-md-2 col-sm-6">
+              <div class="form-group text-center">
+                <label class="form-label fw-bold">Amount</label>
+                <input
+                  type="number"
+                  class="form-control text-center"
+                  style="
+                    height: 32px !important;
+                    margin-bottom: 0 !important;
+                  "
+                  [(ngModel)]="SSub.amount"
+                  disabled
+                />
+              </div>
+            </div>
+           
+            <div class="col-md-3 col-sm-6  mt-2" *ngIf="sharedService.globalgodown">
+              <label class="form-label fw-bold">Godown</label>
+              <ng-select
+                  [items]="goArr"
+                  bindValue="cId"
+                  bindLabel="goName"
+                  [(ngModel)]="SSub.n2"
+                  (change)="onChangeGodown($event)"
+                  
+                  >
+                </ng-select>
+            </div>
+            <div class="col-md-2  col-sm-6 mt-3 d-flex align-items-start">
+
+              <div class=" ">
+                <div
+                  class="form-check flex-row"
+                  style="margin-right: 23px"
+                >
+                  <input
+                    class=""
+                    type="radio"
+                    name="sType"
+                    id="sale"
+                    [value]="ST[0].sType"
+                    (change)="changeType($event)"
+                    checked
+                  />
+                  <label class="form-check-label fs-2" for="purchase"
+                    >Sale</label
+                  >
+                </div>
+                <div
+                  class="form-check flex-row"
+                  style="margin-right: 23px"
+                >
+                  <input
+                    class=""
+                    type="radio"
+                    name="sType"
+                    id="return"
+                    [value]="ST[1].sType"
+                   (change)="changeType($event)"
+                    
+                  />
+                  <label class="form-check-label fs-2" for="purchase"
+                    >Return</label
+                  >
+                </div>
+                <!-- <div
+                  class="form-check flex-row mb-3"
+                  style="margin-right: 16px"
+                >
+                  <input
+                    class=""
+                    type="radio"
+                    name="pType"
+                    id="return"
+                    value="Return"
+                    (change)="changeType($event)"
+                  />
+                  <label class="form-check-label fs-2" for="return"
+                    >Return</label
+                  >
+                </div> -->
+              </div>
+            </div>
+           
+            <div class="col-md-2 h-100 col-sm-12 mt-md-4 float-md-end mt-2">
+              <button
+                class="btn "
+                (click)="addLine()"
+                style="
+                  height: 33px !important;
+                  width: 70%;
+                  float: inline-end;
+                  margin-top: 1px;
+                  background-color: #4AAE1C;
+                  color: white;
+                "
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row shadow p-3" style="height: 530px;" >
+      <div class="col-md-9 d-flex flex-column justify-content-between">
+         <div
+        class="table-responsive mt-2 col-xl-12"
+        style="max-height: 48vh; overflow-y: auto"
+      >
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th  style="width: 10%">Bar Code</th>
+              <th  style="width: 10%">Item Name</th>
+              <th  style="width: 10%">Packet</th>
+              <th  style="width: 10%">Packet Qty</th>
+              <th  style="width: 10%">Qty</th>
+              <th  style="width: 10%">Rate</th>
+              <th  style="width: 10%">Dis%</th>
+              <th style="width: 10%">Dis Rs.</th>
+              <th  style="width: 10%">Amount</th>
+              <th style="width: 10%;" *ngIf="sharedService.globalgodown">Godown</th>
+              <th  style="width: 10%">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let a of SMain.salesDetail"
+              
+              [style.background]="
+                a.saleType === 1 ? '#E9FCEA  ' : '#FCE9E9'
+              "
+              class="text-center"
+            >
+              <td  style="width: 10%">{{ a.barcode }}</td>
+              <td  style="width: 10%">{{ a.itemDescription }}</td>
+              <td  style="width: 10%">{{ a.packet }}</td>
+              <td  style="width: 10%">{{ a.pktQty }}</td>
+              <td  style="width: 10%">{{ a.qty }}</td>
+              <td  style="width: 10%">{{ a.rate }}</td>
+              <td  style="width: 10%">{{ a.disPer }} %</td>
+              <td  style="width: 10%">{{a.disRS }} </td>
+            
+              <td  style="width: 10%">{{ a.amount }}</td>
+                <td style="width: 10%;" *ngIf="sharedService.globalgodown">
+              {{a.txt3}}
+              </td>
+
+              <td class="text-right">
+                <a class="text-primary mx-2" (click)="editLine(a)">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <a class="text-danger mx-2" (click)="DeleteLine(a)">
+                  <i class="fa-regular fa-trash-can"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <footer>
+          <div
+            class="d-flex justify-content-center col-md-12 p-3 text-center border gap-4 mt-3"
+          >
+            <div class="row mb-2 align-items-center">
+              <div class="col-md-5">
+                <label for="balance" class="form-label fw-bold"
+                  >Sales Packet</label
+                >
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="payable"
+                  class="form-control text-center"
+                  disabled
+                />
+              </div>
+            </div>
+      
+            <div class="row mb-2 d-flex align-items-center">
+              <div class="col-md-5">
+                <label for="lsr" class="form-label fw-bold">Sales Qty</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="lsr"
+                  disabled
+                  class="form-control text-center"
+                />
+              </div>
+            </div>
+      
+            <div class="row mb-2 align-items-center">
+              <div class="col-md-5">
+                <label for="lsr" class="form-label fw-bold">Return Packet</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="lsr"
+                  disabled
+                  class="form-control text-center"
+                />
+              </div>
+            </div>
+      
+            <div class="row mb-1 align-items-center">
+              <div class="col-md-4">
+                <label for="lsr" class="form-label fw-bold">Return Qty</label>
+              </div>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  id="lsr"
+                  disabled
+                  class="form-control text-center"
+                />
+              </div>
+            </div>
+      
+            <!-- Other grid elements here -->
+          </div>
+        </footer>
+      </div>
+    </div>
+      <div class="col-md-3 border"> <div class="row h-100">
+        <div class="col-xl-12">
+          <div class="d-flex align-items-center p-2">
+            <div class="row mb-3">
+              <div class="col-xl-12 col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label"
+                    >Total Sale Amount</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="SMain.gSale"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="col-xl-12 mt-2 col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label"
+                  
+                    >Total return Amount</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="SMain.sReturn"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="col-xl-12 mt-2 col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Discount </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="SMain.discountUser"
+                    (keyup)="cashReceived($event)"
+                  />
+                </div>
+              </div>
+              <div class="col-xl-12 mt-2 col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Cash Paid</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="cashRece"
+                    (keyup)="cashReceived($event)"
+                  />
+                </div>
+              </div>
+
+              <div class="col-xl-12 mt-2 col-md-12">
+                <div class="form-group">
+                  <label for="" class="form-label">Net Bill</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="netBill"
+                    disabled
+                  />
+                </div>
+              </div>
+              <!-- <div class="d-flex justify-content-end">
+                <button
+                  class="btn btn-labeled btn-success border-0 m-2"
+                  (click)="Save()"
+                >
+                  <span class="btn-label p-2">
+                    <i class="fa-solid fa-floppy-disk"></i> </span
+                  >Save
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    
+  </div>
+
+
+<!-- ================================= -->
+

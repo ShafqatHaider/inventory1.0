@@ -1,0 +1,26 @@
+
+<div class="form-holder">
+    <div class="form-content">
+        <div class="form-items">
+
+       
+                
+                <div class="form-group mb-2">
+                    <label>Godown Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="godown.goName" (keyup.enter)="save()">
+                    <!-- <div *ngIf="newForm.get('eType').invalid && newForm.get('eType').touched" class="text-light">
+                        Type is required
+                      </div> -->
+                </div>
+                
+       <div class="d-flex justify-content-end">
+        <button type="submit" class=" btn"
+        
+        style="background: #4aa41c; color:white"
+        (click)="save()" >Submit</button>
+       </div>
+
+      </div>
+      </div>
+      </div>
+      

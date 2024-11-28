@@ -1,0 +1,493 @@
+<div class="container mt-1 py-2">
+  <div
+    class="eas-border-radius-0 bg-primary inner-header text-light nav-wrapper"
+  >
+    <div class="flex-row-back">
+      <a (click)="location.back()" class="nav-item-back">
+        <i class="fa-solid fa-arrow-left"></i
+      ></a>
+      <h6 class="text-right my-2">{{branchName}} | New Code with Multiple Units</h6>
+    </div>
+    <div class="flex-row">
+      <button class="btn btn-labeled btn-light border-0 my-2" (click)="save()">
+        <span class="btn-label px-1">
+          <i class="fa-solid fa-floppy-disk"></i> </span
+        >{{ code.cid ? "Update" : "Save" }}
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 mt-2">
+      <div class="card shadow border px-2 p-2">
+        <div class="row mb-2">
+          <div class="col-6 col-md">
+            <div class="form-group">
+              <label class="form-label">ID</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="code.cid"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="form-group">
+              <label class="form-label">Date</label>
+              <input type="date" class="form-control" [(ngModel)]="eDate" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-6 col-md">
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <ng-select
+                [items]="cateArr"
+                bindValue="cateID"
+                bindLabel="title"
+                [(ngModel)]="code.pCateID"
+                (change)="changeCate($event)"
+              ></ng-select>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="form-group">
+              <label class="form-label">Sub Category</label>
+              <ng-select
+                [items]="subCateArr"
+                bindValue="scid"
+                bindLabel="subTitle"
+                [(ngModel)]="code.subcateID"
+                (change)="changeScate($event)"
+              ></ng-select>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md">
+            <div class="form-group">
+              <label class="form-label">Code Name</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="code.codeName"
+                name="name"
+                #nameInput="ngModel"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label class="form-label">Barcode</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="code.barcode"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md">
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="code.itemDescription"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class=" d-flex  align-items-center mb-2">
+          <div class="col-md-12 d-flex">
+            <div class="col-md-10 pe-1">
+              <label class="form-label">Type</label>
+              <ng-select
+                [items]="etypeArr"
+                bindValue="cid"
+                bindLabel="eType"
+                [(ngModel)]="code.n1"
+                (change)="onChangeProductType($event)"
+              ></ng-select>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+              <button
+                class="btn w-100"
+                style="background-color: #4aa41c ;
+                 height: 35px;
+                 color: white; "
+                (click)="OnTypeModal()"
+              >
+              <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row d-flex align-items-center g-1">
+          <div class="col-md-5">
+            <label class="form-label">Base Rate</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="code.costRate"
+              name="costRate"
+              #costRateInput="ngModel"
+              required
+              (keyup)="onChangeRate($event); isInvalidCostRate(code.costRate)"
+            />
+          </div>
+          <div class="col-md-5">
+            <label class="form-label">Base Unit</label>
+            <ng-select
+              [items]="unitArr"
+              bindValue="cid"
+              bindLabel="measurementName"
+              (change)="changeUnit($event)"
+              [(ngModel)]="code.measureID"
+            ></ng-select>
+          </div>
+          <div class="col-md-2 d-flex align-items-end">
+            <button
+              class="btn w-100"
+              id="btn-city"
+              (click)="unitModal()"
+              style="height: 35px; margin-top: 35px;background-color: #4aa41c ;color: white;"
+            >
+            <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-sm-8 mt-1">
+      <div class="card shadow border px-4 py-3 mt-1">
+        <div class="d-flex gap-2 mb-2">
+          <div class="col-sm-6">
+            <div
+              class="core-row"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2px;
+                flex-direction: row;
+                width: 100%;
+              "
+            >
+              <div class="core-content" style="width: 100%">
+                <label class="form-label">Select Unit</label>
+                <ng-select
+                  [items]="unitArr"
+                  bindValue="cid"
+                  bindLabel="measurementName"
+                  (change)="onChangeUnit($event)"
+                  [(ngModel)]="subModel.unitId"
+                  #select
+                >
+                </ng-select>
+              </div>
+              <div class="core-button" style="width: 12%; margin-top: 32px">
+                <button
+                  class="btn"
+                  style="padding: 5px 18px !important; height: 35px;background-color: #4aa41c ;color: white;"
+                  type="button"
+                  id="btn-city"
+                  (click)="unitModal()"
+                >
+                <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div
+              class="core-row"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 2px;
+                flex-direction: row;
+                width: 100%;
+              "
+            >
+              <div class="core-content" style="width: 100%">
+                <label class="form-label">Select Godown</label>
+                <ng-select
+                  [items]="goArr"
+                  bindValue="cid"
+                  bindLabel="goName"
+                  (change)="onChangeGodown($event)"
+                  [(ngModel)]="subModel.godownId"
+                >
+                </ng-select>
+              </div>
+              <div class="core-button" style="width: 12%; margin-top: 32px">
+                <button
+                  class="btn"
+                  style="padding: 5px 18px !important; height: 35px;background-color: #4aa41c ;color: white;"
+                  type="button"
+                  id="btn-city"
+                  (click)="goModal()"
+                >
+                <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-1 mb-2">
+          <div class="col-sm-4 col-md">
+            <div class="form-group g-level">
+              <label class="form-label">Cost Rate</label>
+              <input
+                type="number"
+                class="form-control grid-input"
+                [(ngModel)]="costRate"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="col-sm-4 col-md g-level">
+            <div class="form-group">
+              <label class="form-label">Qty</label>
+              <input
+                type="number"
+                class="form-control grid-input"
+                [(ngModel)]="subModel.qty"
+                (keydown.Tab)="onChageQty($event)"
+              />
+            </div>
+          </div>
+          <div class="col-sm-4 col-md">
+            <div class="form-group g-level">
+              <label class="form-label">Total Qty</label>
+              <input
+                type="number"
+                class="form-control grid-input"
+                disabled
+                [(ngModel)]="subModel.totalQty"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row g-1 mb-2">
+          <div class="col-sm-5 col-md-5 col-6">
+            <div class="form-group">
+              <label class="form-label">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="subModel.costRate"
+              />
+            </div>
+          </div>
+          <div class="col-sm-5 col-md-5 col-5">
+            <div class="form-group">
+              <label class="form-label">Rate</label>
+              <input
+                type="number"
+                class="form-control"
+                [(ngModel)]="subModel.saleRate"
+              />
+            </div>
+          </div>
+          <div class="col-sm-2 col-md-2 col-12">
+            <button
+              class="btn w-100"
+              style="margin-top: 2rem !important;background-color: #4aa41c ;color: white;"
+              (click)="addSmallLine()"
+            >
+            <i class="fa-solid fa-plus"></i> Add
+            </button>
+          </div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th class="head">Unit</th>
+                <th class="head">Qty</th>
+                <th class="head">Cost Rate</th>
+                <th class="head">Sale Rate</th>
+                <th class="head">Godown</th>
+                <th class="head">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let a of code.codeDetails">
+                <td>{{ a.unitName }}</td>
+                <td>{{ a.qty }}</td>
+                <td>{{ a.costRate }}</td>
+                <td>{{ a.saleRate }}</td>
+                <td>{{ a.godownName }}</td>
+                <td class="text-right">
+                  <a class="text-primary mr-2" (click)="editLine(a)">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </a>
+                  <a class="text-danger" (click)="DeleteLine(a)">
+                    <i class="fa-solid fa-trash-arrow-up"></i
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayUnitModal }"
+  style="margin-top: 190px"
+>
+  <div
+    class="modal-dialog mx-auto"
+    role="document"
+    style="border: 1px solid #4aa41c; width: 100%; min-width: 30vw"
+  >
+    <div class="modal-content" >
+      <div
+        class="modal-header"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #4aa41c ;
+          padding: 5px 8px;
+          color: #ffffff;
+        "
+      >
+        <h3 class="modal-title text-light text-center">Add New Unit</h3>
+        <button
+          class="btn btn-danger text-light"
+          (click)="displayUnitModal = 'none'"
+        >
+          X
+        </button>
+      </div>
+      <div
+        class="modal-body p-4"
+        style="padding: 5px 8px; background-color: white"
+      >
+        <app-unit
+          [displayModal]="UnitModal"
+          (closeModal)="UnitModal = false"
+          (saveUnit)="onSaveUnit($event); closeModal.emit()"
+          (triggerGetUnitLookups)="getUnitLookups()"
+        >
+        </app-unit>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Godown Modal -->
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayGodownModal }"
+  style="margin-top: 190px"
+>
+  <div
+    class="modal-dialog mx-auto"
+    role="document"
+    style="border: 1px solid #4aa41c; width: 100%; min-width: 30vw"
+  >
+    <div class="modal-content" style="background: #fff">
+      <div
+        class="modal-header"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #4aa41c ;
+          padding: 5px 8px;
+          color: #ffffff;
+        "
+      >
+        <h3 class="modal-title text-light text-center">Add New Godown</h3>
+        <button
+          class="btn btn-danger text-light"
+          (click)="displayGodownModal = 'none'"
+        >
+          X
+        </button>
+      </div>
+      <div
+        class="modal-body p-4"
+        style="padding: 5px 8px; background-color: white"
+      >
+      <app-warehouse
+       [displayModal]="goModalBol"
+       (closeModal)="goModalBol==false"
+       (saveGodown)="saveGodown($event); closeGoModal.emit()"
+       (triggerGetGodownLookups)="getGodownLookups()"
+       ></app-warehouse>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPE Modal -->
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: eTypeModal }"
+  style="margin-top: 190px"
+>
+  <div
+    class="modal-dialog mx-auto"
+    role="document"
+    style="border: 1px solid #4aa41c; width: 100%; min-width: 30vw"
+  >
+    <div class="modal-content" style="background: #fff">
+      <div
+        class="modal-header"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background-color: #4aa41c ;
+          padding: 5px 8px;
+          color: #ffffff;
+        "
+      >
+        <h3 class="modal-title text-light text-center">Add New Type</h3>
+        <button class="btn-danger text-dark" (click)="eTypeModal = 'none'">
+          X
+        </button>
+      </div>
+      <div
+        class="modal-body p-4"
+        style="padding: 5px 8px; background-color: white"
+      >
+       <app-types
+       [displayModal]="typeModal"
+       (closeModal)="typeModal==false"
+       (saveType)="saveType($event); closeTypeModal.emit()"
+       (triggerGetTypeLookups)="getTypeLookups()"
+       ></app-types>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,259 @@
+<div class="container-fluid my-1">
+  <div
+    class="eas-border-radius-0 bg-primary inner-header text-light nav-wrapper"
+  >
+    <div class="flex-row-back">
+      <a (click)="location.back()" class="nav-item-back">
+        <i class="fa-solid fa-arrow-left"></i
+      ></a>
+      <h6 class="text-right my-2">{{branchName}} | Sales Index</h6>
+    </div>
+    <div class="flex-row" style="gap: 5px">
+      <button
+        class="btn btn-light border-0 my-2 mr-1 btn-mobile"
+        (click)="newSale()"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      <button
+        class="btn btn-light border-0 my-2 mr-1 btn-mobile"
+        *ngIf="bit == 0"
+        (click)="openDateModal()"
+      >
+        <i class="fa-solid fa-filter"></i>
+      </button>
+      <button
+        class="btn btn-light border-0 my-2 mr-1 btn-mobile"
+        *ngIf="bit == 1"
+        (click)="refresh()"
+      >
+        <i class="fa-solid fa-filter-circle-xmark"></i>
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-labeled btn-light border-0 my-2 mr-1"
+        (click)="newSaleWithST()"
+      >
+        <span class="btn-label">
+          <i class="fa-solid fa-percent"></i>
+        </span>
+        New Sale With ST
+      </button>
+      <button
+        type="button"
+        class="btn btn-labeled btn-light border-0 my-2 mr-1"
+        (click)="newSale()"
+      >
+        <span class="btn-label">
+          <i class="fa-solid fa-plus"></i>
+        </span>
+        New Sale
+      </button>
+      <button
+        class="btn btn-labeled btn-light border-0 my-2"
+        *ngIf="bit == 1"
+        (click)="refresh()"
+      >
+        <span class="btn-label"
+          ><i class="fa-solid fa-filter-circle-xmark"></i
+        ></span>
+        Remove Filter
+      </button>
+      <button
+        class="btn btn-labeled btn-light border-0 my-2"
+        *ngIf="bit == 0"
+        (click)="openDateModal()"
+      >
+        <span class="btn-label">
+          <i class="fa-solid fa-filter"></i>
+        </span>
+        Filter
+      </button>
+    </div>
+  </div>
+<!-- 
+  <ng-container *ngIf="assign == 2">
+    <div class="card shadow border-0 p-3">
+      <div class="table-responsive">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control eas-border-radius-0"
+            placeholder="Search..."
+            [(ngModel)]="filterTerm"
+          />
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="text-align: left; width: 10%">S#</th>
+              <th style="text-align: left; width: 10%">Date</th>
+              <th style="text-align: left; width: 50%">PartyName</th>
+              <th style="text-align: right; width: 20%">Amount</th>
+              <th style="text-align: right; width: 10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sale of saleData; let i = index">
+              <td style="text-align: left; width: 10%">{{ sale.sMid }}</td>
+              <td style="text-align: left; width: 10%">
+                {{ sale.eDate | date : "dd-MM-yyyy" }}
+              </td>
+
+              <td style="text-align: left; width: 50%">
+                {{ sale.sAccName | uppercase }}
+              </td>
+              <td style="text-align: right; width: 20%">
+                {{ sale.billAmount }}
+              </td>
+              <td class="text-right" style="width: 10%">
+                <a
+                  class="text-primary mx-2"
+                  *ngIf="isWrite == 'true'"
+                  (click)="edit(sale)"
+                >
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <a
+                  class="text-primary mx-2"
+                  *ngIf="isWrite == 'true'"
+                  (click)="editSTSale(sale)"
+                >
+                  <i class="fa-solid fa-percent"></i>
+                </a>
+                <a
+                  class="text-danger mx-2"
+                  *ngIf="isDelete == 'true'"
+                  (click)="delete(sale)"
+                >
+                  <i class="fa-regular fa-trash-can"></i>
+                </a>
+                <a class="text-warning mx-2" (click)="viewBill(sale)">
+                  <i class="fa-solid fa-receipt"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container> -->
+  <ng-container >
+    <div class="card shadow border-0 p-3">
+      <div class="table-responsive">
+        <div class="form-group">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control eas-border-radius-0"
+              placeholder="Search..."
+              [(ngModel)]="filterTerm"
+            />
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th style="text-align: left; width: 10%">S#</th>
+              <th style="text-align: left; width: 10%">Date</th>
+              <th style="text-align: left; width: 50%">PartyName</th>
+              <th style="text-align: right; width: 20%">Amount</th>
+              <th style="text-align: right; width: 10%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sale of saleData; let i = index">
+              <td style="text-align: left; width: 10%">{{ sale.sMid }}</td>
+              <td style="text-align: left; width: 10%">
+                {{ sale.eDate | date : "dd-MM-yyyy" }}
+              </td>
+              <td style="text-align: left; width: 50%">
+                {{ sale.sAccName | uppercase }}
+              </td>
+              <td style="text-align: right; width: 20%">
+                {{ sale.billAmount }}
+              </td>
+              <td class="text-right;" style="width: 10%; text-align: right">
+                <a class="text-primary mx-2" (click)="edit(sale)">
+                  <i class="fa-regular fa-pen-to-square"></i>
+                </a>
+                <a class="text-primary mx-2" (click)="editSTSale(sale)">
+                  <i class="fa-solid fa-percent"></i>
+                </a>
+                <a class="text-danger mx-2" (click)="delete(sale)">
+                  <i class="fa-regular fa-trash-can"></i>
+                </a>
+                <a class="text-warning mx-2" (click)="viewBill(sale)">
+                  <i class="fa-solid fa-receipt"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div
+  class="modal eas-border-radius-0 shadow"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: dateDisplay }"
+  style="margin-top: 190px"
+>
+  <div
+    class="modal-dialog mx-auto"
+    role="document"
+    style="background: rgb(220, 237, 251); border: 1px solid #ccc; width: 80%"
+  >
+    <div class="modal-content" style="background: aliceblue">
+      <!-- MODAL HEADER -->
+      <div
+        class="modal-header eas-border-radius-0"
+        style="background: #171261; padding: 5px !important"
+      >
+        <h3 class="modal-title text-light text-center">Pick Date</h3>
+      </div>
+      <!-- MODAL BODY -->
+      <div class="modal-body" style="padding: 2px !important">
+        <div class="row px-2">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="">From</label>
+              <input type="date" class="form-control" [(ngModel)]="fDate" />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="">To</label>
+              <input type="date" class="form-control" [(ngModel)]="tDate" />
+            </div>
+          </div>
+        </div>
+        <div class="row g-1 pb-2 px-2">
+          <div class="col-6 text-left">
+            <button
+              class="btn eas-btn-success eas-border-radius-0"
+              style="padding: 6px 45px"
+              (click)="getFilteredData()"
+            >
+              Search
+            </button>
+          </div>
+          <div class="col-6 text-right">
+            <button
+              type="button"
+              class="btn btn-danger eas-border-radius-0"
+              style="padding: 6px 45px"
+              (click)="closeDateModal()"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

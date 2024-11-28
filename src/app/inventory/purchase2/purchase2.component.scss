@@ -1,0 +1,816 @@
+
+.nav-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 0px 5px;
+  }
+  .flex-row-back {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .flex-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+  }
+  .nav-item-back {
+    border-right: solid 2px #fff;
+    padding: 10px;
+    color: #fff;
+  }
+  
+  .content-wrapper
+  {
+    height: auto;
+    width: 100%;
+    padding:10px 20px;
+    border: 1px solid #ccc;
+    background-color: F7F7F7;
+  }
+  
+  @keyframes slideFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+  
+  @keyframes slideFromRight {
+    from {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+  }
+    to {
+      transform: translateX(0%);
+    }
+  }
+  
+  .tab-pane.fade {
+    animation: slideFromRight 0.5s both;
+  }
+  
+  .tab-pane.fade.show.active {
+    animation: slideFromLeft 0.5s both;
+  }
+  
+  
+  /* FORM CSS */
+  
+  /* .form-group{
+  display: inline-flex;
+  width: 75%;
+  }
+  .form-group label{
+  font-size: 0.8rem;
+  width: 25%;
+  bottom:0px;
+  } */
+  .c-label{
+  font-size: 0.8rem;
+  font-weight: bold;
+  }
+  .btn-add{
+  margin-top: 1.8rem !important;
+  }
+  
+  .form-group{
+  margin: 5px!important;
+  }
+  
+  .bilty{
+  display: block;
+  }
+  .screen-lg{
+  display: block;
+  }
+  .mobile-total{
+  display: none;
+  }
+  @media screen and (max-width:768px) {
+  .screen-lg{
+    display: none;
+  }
+  .bilty{
+    display: none;
+  }
+  .mobile-total{
+    display: block;
+  }
+  }
+  
+  
+  .form-label {
+  margin-bottom: 0;
+  }
+  .form-group {
+  margin-bottom: 0.3rem!important;
+  margin-top: 0.3rem!important;
+  
+  }
+  
+  .table {
+  background-color: #ffffff;
+  }
+  .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+  }
+  .table-bordered {
+  border: 1px solid #ddd;
+  }
+  
+  
+  /* github css */
+  .form-group {
+  margin-bottom: 10px;
+  }
+  .table-bordered {
+  border: 1px solid #ddd;
+  }
+  .table-bordered th,
+  .table-bordered td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  }
+  .purchase-button {
+  margin-top: 10px;
+  }
+  label {
+  font-size: 0.8rem !important;
+  }
+  input {
+  padding: 3px 2px !important;
+  font-size: 1rem !important;
+  width: 100%;
+  font-weight: 400;
+  line-height: 0.8;
+  }
+  @media screen and (max-width: 500) {
+  .header {
+    width: 100% !important;
+    background: red !important;
+  }
+  }
+
+
+
+  .invoice-pdf {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .sale-info {
+    margin-bottom: 20px;
+  }
+  
+  .sale-info h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .sale-info p {
+    margin-bottom: 10px;
+  }
+  
+  .details {
+    margin-bottom: 20px;
+  }
+  
+  .details h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .details table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .details th, .details td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .details th {
+    background-color: #f0f0f0;
+  }
+  
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .footer p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .head{
+    background: rgb(226, 224, 224);
+  }
+
+
+
+
+
+
+//   <div class="container-fluid mt-1">
+//   <div
+//     class="eas-border-radius-0 bg-primary inner-header text-light nav-wrapper"
+//   >
+//     <div class="flex-row-back">
+//       <a
+//         class="nav-item-back"
+//         style="cursor: pointer"
+//         (click)="location.back()"
+//       >
+//         <i class="fa-solid fa-arrow-left"></i
+//       ></a>
+//       <h6 class="text-right my-2 p-2">Add New Purchase</h6>
+//     </div>
+//     <div class="flex-row" style="gap: 5px">
+//       <button class="btn btn-labeled btn-light border-0 my-2">
+//         <span class="btn-label"> </span>
+//         Statement
+//       </button>
+//       <button class="btn btn-labeled btn-light border-0 my-2" (click)="Save()">
+//         <span class="btn-label">
+//           <i class="fa-solid fa-floppy-disk"></i>
+//         </span>
+//         {{ this.purchase.pMid ? "Update" : "Save" }}
+//       </button>
+//       <button
+//         class="btn btn-labeled btn-light border-0 my-2"
+//         (click)="printVoucher()"
+//       >
+//         <span class="btn-label">
+//           <i class="fa-solid fa-floppy-disk"></i>
+//         </span>
+//         Print View
+//       </button>
+//     </div>
+//   </div>
+//   <ng-container *ngIf="!isPrint">
+//     <div class="container-fluid">
+//       <div class="row">
+//         <div class="col-xl-9">
+//           <div class="row">
+//             <div class="col-xl-12">
+//               <div class="row" *ngIf="purchase.pMid !== 0">
+//                 <div class="col-xl-12 col-12">
+//                   <div class="form-group">
+//                     <label for="" class="form-label">ID</label>
+//                     <input
+//                       type="number"
+//                       class="form-control"
+//                       [(ngModel)]="purchase.pMid"
+//                       disabled
+//                     />
+//                   </div>
+//                 </div>
+//               </div>
+//               <div class="row mt-1">
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Date</label>
+//                   <input
+//                     type="date"
+//                     class="form-control"
+//                     [(ngModel)]="eDate"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Bill No.</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     [(ngModel)]="purchase.billNo"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-3 col-sm-6">
+//                   <label for="" class="form-label">Salesman</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Pandi</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Builty No.</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//               </div>
+//               <div class="row mt-2">
+//                 <div class="col-md-4 mt-1">
+//                   <div class="d-flex justify-content-between">
+//                     <label for="floatingInputGrid" class="form-label"
+//                       >Party</label
+//                     >
+//                     <!-- <h6 class="text-right text-success">{{ payable }}</h6> -->
+//                   </div>
+//                   <ng-select
+//                     [items]="partyArr"
+//                     bindLabel="customerName"
+//                     bindValue="customerID"
+//                     [(ngModel)]="purchase.sAccID"
+//                     (change)="changeParty($event)"
+//                     required
+//                   >
+//                   </ng-select>
+//                 </div>
+//                 <div class="col-xl-3 col-sm-6">
+//                   <label for="" class="form-label">Remarks as cash Party</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Phone No.</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//                 <div class="col-xl-2 col-sm-6">
+//                   <label for="" class="form-label">Credit Limit</label>
+//                   <input
+//                     type="text"
+//                     class="form-control"
+//                     style="height: 32px !important; margin-bottom: 0 !important"
+//                   />
+//                 </div>
+//               </div>
+//               <div class="d-md-flex mt-2">
+//                 <div class="col-md-4 col-sm-12" style="margin-top: 1px">
+//                   <label class="form-label">Item</label>
+//                   <ng-select
+//                     [items]="itemsArr"
+//                     bindLabel="itemDescription"
+//                     bindValue="itemID"
+//                     [(ngModel)]="_pSub.itemID"
+//                     (change)="changeItem($event)"
+//                     required
+//                     [searchFn]="customSearchFn"
+//                     #select
+//                   >
+//                   </ng-select>
+//                 </div>
+
+//                 <div class="col-md-4 col-sm-12">
+//                   <div class="row no-gutters g-0">
+//                     <div class="col-md-3 col-sm-6 text-center">
+//                       <div class="form-group">
+//                         <label class="form-label">Unit</label>
+//                         <input
+//                           type="text"
+//                           class="form-control text-center"
+//                           [(ngModel)]="_pSub.measureUnit"
+//                           diabled
+//                           style="
+//                             height: 32px !important;
+//                             margin-bottom: 0 !important;
+//                           "
+//                         />
+//                       </div>
+//                     </div>
+//                     <div class="col-md-3 col-sm-6">
+//                       <div class="form-group text-center">
+//                         <label class="form-label">Packet</label>
+//                         <input
+//                           type="number"
+//                           class="form-control text-center"
+//                           style="
+//                             height: 32px !important;
+//                             margin-bottom: 0 !important;
+//                           "
+//                         />
+//                       </div>
+//                     </div>
+//                     <div class="col-md-3 col-sm-6">
+//                       <div class="form-group text-center">
+//                         <label class="form-label">Packet Qty</label>
+//                         <input
+//                           type="number"
+//                           class="form-control text-center"
+//                           style="
+//                             height: 32px !important;
+//                             margin-bottom: 0 !important;
+//                           "
+//                         />
+//                       </div>
+//                     </div>
+//                     <div class="col-md-3 col-sm-6">
+//                       <div class="form-group text-center">
+//                         <label class="form-label">Qty</label>
+//                         <input
+//                           type="number"
+//                           class="form-control text-center"
+//                           [(ngModel)]="_pSub.qty"
+//                           style="
+//                             height: 32px !important;
+//                             margin-bottom: 0 !important;
+//                           "
+//                         />
+//                       </div>
+//                     </div>
+//                   </div>
+//                 </div>
+
+//                 <div class="col-md-4 col-sm-12 p-0">
+//                   <div class="row no-gutters g-1">
+//                     <div class="col-md-3 col-sm-6">
+//                       <div class="form-group text-center">
+//                         <label class="form-label">Discount%</label>
+//                         <input
+//                           type="number"
+//                           class="form-control text-center"
+//                           [(ngModel)]="_pSub.qty"
+//                           style="
+//                             height: 32px !important;
+//                             margin-bottom: 0 !important;
+//                           "
+//                         />
+//                       </div>
+//                     </div>
+//                     <div class="col-md-3 col-sm-6 text-center mt-2">
+//                       <label class="form-label">Rate</label>
+//                       <input
+//                         type="number"
+//                         class="form-control text-center"
+//                         [(ngModel)]="_pSub.purchaseRate"
+//                         style="
+//                           height: 32px !important;
+//                           margin-bottom: 0 !important;
+//                         "
+//                       />
+//                     </div>
+//                     <div class="col-md-3 col-sm-6 text-center mt-3">
+//                       <div class="d-flex flex-column justify-content-center">
+//                         <div class="form-check me-3 flex-row">
+//                           <input
+//                             class=""
+//                             type="radio"
+//                             name="pType"
+//                             id="purchase"
+//                             value="Purchase"
+//                             (change)="changeType($event)"
+//                           />
+//                           <label class="form-check-label fs-2" for="purchase"
+//                             >Purchase</label
+//                           >
+//                         </div>
+//                         <div
+//                           class="form-check flex-row mb-3"
+//                           style="margin-right: 25px"
+//                         >
+//                           <input
+//                             class=""
+//                             type="radio"
+//                             name="pType"
+//                             id="return"
+//                             value="Return"
+//                             (change)="changeType($event)"
+//                           />
+//                           <label class="form-check-label fs-2" for="return"
+//                             >Return</label
+//                           >
+//                         </div>
+//                       </div>
+//                     </div>
+//                     <div class="col-md-3 col-sm-12 mt-md-4 float-md-end mt-2">
+//                       <button
+//                         class="btn btn-success"
+//                         (click)="addLine()"
+//                         style="
+//                           height: 33px !important;
+//                           width: 70px;
+//                           float: inline-end;
+//                           margin-top: 1px;
+//                         "
+//                       >
+//                         ADD
+//                       </button>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//             <div
+//               class="table-responsive mt-2 col-xl-12"
+//               style="max-height: 48vh; overflow-y: auto"
+//             >
+//               <table class="table table-bordered text-center">
+//                 <thead>
+//                   <tr>
+//                     <th class="head" style="width: 10%">Bar Code</th>
+//                     <th class="head" style="width: 20%">Item Name</th>
+//                     <th class="head" style="width: 10%">Packet</th>
+//                     <th class="head" style="width: 10%">Packet Qty</th>
+//                     <th class="head" style="width: 10%">Qty</th>
+//                     <th class="head" style="width: 10%">Rate</th>
+//                     <th class="head" style="width: 10%">Dis Rs.</th>
+//                     <th class="head" style="width: 10%">Dis%</th>
+//                     <th class="head" style="width: 10%">Amount</th>
+//                     <th class="head" style="width: 10%">Action</th>
+//                   </tr>
+//                 </thead>
+                // <tbody>
+                //   <tr *ngFor="let a of purchase.purchasesDetail">
+                //     <td style="width: 30%">{{ a.itemDescription }}</td>
+                //     <td style="width: 10%">{{ a.qty }}</td>
+                //     <td style="width: 10%">{{ a.purchaseRate }}</td>
+                //     <td style="width: 15%">
+                //       {{
+                //         a.qty * a.purchaseRate -
+                //           (a.qty * a.purchaseRate * a.disPer) / 100
+                //       }}
+                //     </td>
+
+                //     <td style="width: 10%">{{ a.pType }}</td>
+                //     <td style="width: 5%">
+                //       <div class="btn-group" style="width: 100%">
+                //         <button
+                //           class="btn btn-primary btn-act btn-edit"
+                //           (click)="editLine(a)"
+                //         >
+                //           <img
+                //             src="./assets/imgs/wedit.svg"
+                //             height="25px"
+                //             width="25px"
+                //             alt=""
+                //           />
+                //         </button>
+                //         <button
+                //           href=""
+                //           class="btn btn btn-danger btn-act btn-del"
+                //           (click)="DeleteLine(a)"
+                //         >
+                //           <img
+                //             src="./assets/imgs/wdel.svg"
+                //             height="25px"
+                //             width="25px"
+                //             alt=""
+                //           />
+                //         </button>
+                //       </div>
+                //     </td>
+                //   </tr>
+                // </tbody>
+//               </table>
+//             </div>
+//           </div>
+//         </div>
+//         <div class="col-xl-3 mt-3">
+//           <div class="row mb-2">
+//             <div class="col-md-3">
+//               <label for="balance" class="form-label">Balance</label>
+//             </div>
+//             <div class="col-md-9">
+//               <input
+//                 type="text"
+//                 id="payable"
+//                 value="{{ payable }}"
+//                 class="form-control text-center"
+//                 disabled
+//               />
+//             </div>
+//           </div>
+
+//           <div class="row mb-2">
+//             <div class="col-md-3">
+//               <label for="lsr" class="form-label">L.P.R</label>
+//             </div>
+//             <div class="col-md-9">
+//               <input
+//                 type="text"
+//                 id="lsr"
+//                 disabled
+//                 [(ngModel)]="lpr"
+//                 class="form-control text-center"
+//               />
+//             </div>
+//           </div>
+//           <div class="row mb-2">
+//             <div class="col-md-3">
+//               <label for="lsr" class="form-label">Stock:</label>
+//             </div>
+//             <div class="col-md-9">
+//               <input
+//                 type="text"
+//                 id="lsr"
+//                 disabled
+//                 [(ngModel)]="sBal"
+//                 class="form-control text-center"
+//               />
+//             </div>
+//           </div>
+//           <div class="row mb-1">
+//             <div class="col-md-3">
+//               <label for="lsr" class="form-label">Profit:</label>
+//             </div>
+//             <div class="col-md-9">
+//               <input
+//                 type="text"
+//                 id="lsr"
+//                 disabled
+//                 [(ngModel)]="iProfit"
+//                 class="form-control text-center"
+//               />
+//             </div>
+//           </div>
+
+
+//           <div class="row mt-4">
+//             <div class="col-xl-12">
+//               <div class="border shadow d-flex align-items-center p-2">
+//                 <div class="row mb-3">
+//                   <div class="col-xl-12 col-md-12">
+//                     <div class="form-group">
+//                       <label for="" class="form-label"
+//                         >Total Purchase Amount</label
+//                       >
+//                       <input
+//                         type="number"
+//                         class="form-control"
+//                         [(ngModel)]="purchase.gSale"
+//                         disabled
+//                       />
+//                     </div>
+//                   </div>
+//                   <div class="col-xl-12 col-md-12">
+//                     <div class="form-group">
+//                       <label for="" class="form-label"
+//                         >Total return Amount</label
+//                       >
+//                       <input
+//                         type="number"
+//                         class="form-control"
+//                         [(ngModel)]="purchase.sReturn"
+//                         disabled
+//                       />
+//                     </div>
+//                   </div>
+//                   <div class="col-xl-12 col-md-12">
+//                     <div class="form-group">
+//                       <label for="" class="form-label">Discount </label>
+//                       <input
+//                         type="number"
+//                         class="form-control"
+//                         [(ngModel)]="purchase.discountUser"
+//                         (keyup)="cashReceived($event)"
+//                       />
+//                     </div>
+//                   </div>
+//                   <div class="col-xl-12 col-md-12">
+//                     <div class="form-group">
+//                       <label for="" class="form-label">Cash Paid</label>
+//                       <input
+//                         type="number"
+//                         class="form-control"
+//                         [(ngModel)]="purchase.cashPay"
+//                         (keyup)="cashReceived($event)"
+//                       />
+//                     </div>
+//                   </div>
+
+//                   <div class="col-xl-12 col-md-12">
+//                     <div class="form-group">
+//                       <label for="" class="form-label">Net Bill</label>
+//                       <input
+//                         type="number"
+//                         class="form-control"
+//                         [(ngModel)]="netBill"
+//                         disabled
+//                       />
+//                     </div>
+//                   </div>
+//                   <div class="d-flex justify-content-end">
+//                     <button
+//                       class="btn btn-labeled btn-success border-0 m-2"
+//                       (click)="Save()"
+//                     >
+//                       <span class="btn-label p-2">
+//                         <i class="fa-solid fa-floppy-disk"></i> </span
+//                       >{{ pmid ? "Update" : "Save" }}
+//                     </button>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   </ng-container>
+//   <footer>
+//     <div
+//       class="d-flex justify-content-center col-md-9 p-3 text-center border gap-5 mt-3"
+//     >
+//       <div class="row mb-2 align-items-center">
+//         <div class="col-md-4">
+//           <label for="balance" class="form-label fw-bold">Sold Packet</label>
+//         </div>
+//         <div class="col-md-9">
+//           <input
+//             type="text"
+//             id="payable"
+//             value="{{ payable }}"
+//             class="form-control text-center"
+//             disabled
+//           />
+//         </div>
+//       </div>
+
+//       <div class="row mb-2 d-flex align-items-center">
+//         <div class="col-md-4">
+//           <label for="lsr" class="form-label fw-bold">Sold Qty</label>
+//         </div>
+//         <div class="col-md-9">
+//           <input
+//             type="text"
+//             id="lsr"
+//             disabled
+//             [(ngModel)]="lpr"
+//             class="form-control text-center"
+//           />
+//         </div>
+//       </div>
+
+//       <div class="row mb-2 align-items-center">
+//         <div class="col-md-4">
+//           <label for="lsr" class="form-label fw-bold">Return Packet</label>
+//         </div>
+//         <div class="col-md-9">
+//           <input
+//             type="text"
+//             id="lsr"
+//             disabled
+//             [(ngModel)]="sBal"
+//             class="form-control text-center"
+//           />
+//         </div>
+//       </div>
+
+//       <div class="row mb-1 align-items-center">
+//         <div class="col-md-4">
+//           <label for="lsr" class="form-label fw-bold">Return Qty</label>
+//         </div>
+//         <div class="col-md-9">
+//           <input
+//             type="text"
+//             id="lsr"
+//             disabled
+//             [(ngModel)]="iProfit"
+//             class="form-control text-center"
+//           />
+//         </div>
+//       </div>
+
+//       <!-- Other grid elements here -->
+//     </div>
+//   </footer>
+// </div>
