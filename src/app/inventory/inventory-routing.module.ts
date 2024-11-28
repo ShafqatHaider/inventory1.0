@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewcodeComponent } from './newcode/newcode.component';
-import { CodeindexComponent } from './codeindex/codeindex.component';
 import { SalewithstComponent } from './salewithst/salewithst.component';
 import { NewsalesComponent } from './newsales/newsales.component';
 import { SaleindexComponent } from './saleindex/saleindex.component';
@@ -10,6 +9,7 @@ import { SubcategoryComponent } from './subcategory/subcategory.component';
 import { PurchaseIndexComponent } from './purchase-index/purchase-index.component';
 import { Purchase2Component } from './purchase2/purchase2.component';
 import { PurchasewithstComponent } from './purchasewithst/purchasewithst.component';
+import { CodeIndexComponent } from './code-index/code-index.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'code', pathMatch:'full'},
@@ -20,7 +20,7 @@ const routes: Routes = [
     path:'code/:cid', component:NewcodeComponent
   },
   {
-    path:'code-index', component:CodeindexComponent
+    path:'code-index', component:CodeIndexComponent
   },
   {
     path:'saletax-invoice', component:SalewithstComponent
@@ -58,10 +58,6 @@ const routes: Routes = [
   {
     path:'purchase-index', component:PurchaseIndexComponent
   },
-
-
-
-
 ];
 
 @NgModule({

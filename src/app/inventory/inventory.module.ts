@@ -3,58 +3,50 @@ import { CommonModule } from '@angular/common';
 import { InventoryRoutingModule } from './inventory-routing.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NewcodeComponent } from './newcode/newcode.component';
-import { CategoryComponent } from './category/category.component';
-import { CodeindexComponent } from './codeindex/codeindex.component';
-import { NewsalesComponent } from './newsales/newsales.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { PurchaseIndexComponent } from './purchase-index/purchase-index.component';
-import { Purchase2Component } from './purchase2/purchase2.component';
 import { PurchasewithstComponent } from './purchasewithst/purchasewithst.component';
 import { SalewithstComponent } from './salewithst/salewithst.component';
 import { StockadjustmentComponent } from './stockadjustment/stockadjustment.component';
-import { StocktransferComponent } from './stocktransfer/stocktransfer.component';
-import { SubcategoryComponent } from './subcategory/subcategory.component';
-import { TypesComponent } from './types/types.component'; // Importing TypesComponent
-import { UnitComponent } from './unit/unit.component';
-import { WarehouseComponent } from './warehouse/warehouse.component';
-import { ToastrService } from 'ngx-toastr';
-import { ToastrModule } from 'ngx-toastr';
 import { SaleindexComponent } from './saleindex/saleindex.component';
 import { CodeIndexComponent } from './code-index/code-index.component';
-import { SaleIndexComponent } from './sale-index/sale-index.component';
 import { CategoryIndexComponent } from './category-index/category-index.component';
 import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
 import { UnitIndexComponent } from './unit-index/unit-index.component';
 import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
+import { SharedModule } from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 @NgModule({
   declarations: [
-    NewcodeComponent,
-    CategoryComponent,
-    CodeindexComponent, 
-    NewsalesComponent, 
+    CategoryIndexComponent,
+    SubcategoryIndexComponent,
+    UnitIndexComponent,
+    WarehouseIndexComponent,
+    CategoryIndexComponent,
+    CodeIndexComponent,
     PurchaseComponent,
     PurchaseIndexComponent,
-    Purchase2Component, 
     PurchasewithstComponent,
+    SaleindexComponent,
     SalewithstComponent,
-    StockadjustmentComponent, 
-    StocktransferComponent, 
-    SubcategoryComponent,  
-    TypesComponent,  // Include TypesComponent here
-    UnitComponent, 
-    WarehouseComponent, SaleindexComponent, CodeIndexComponent, SaleIndexComponent, CategoryIndexComponent, SubcategoryIndexComponent, UnitIndexComponent, WarehouseIndexComponent,
+    StockadjustmentComponent,
+    SubcategoryIndexComponent,
+    UnitIndexComponent,
+    SaleindexComponent
+
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     FormsModule,
     InventoryRoutingModule,
     NgSelectModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
-    
+    SharedModule,
+   
   ],
-  providers:[ToastrService]
+  providers: []
 })
 export class InventoryModule { }

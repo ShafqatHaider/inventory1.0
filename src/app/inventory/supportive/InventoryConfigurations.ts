@@ -1,14 +1,18 @@
-export const InventoryConfigurations={
-    category:{
-        data:[]
+export const InventoryConfigurations = {
+    category: {
+        data: []
     },
-    subcategory:{
-        data:[]
+    subcategory: {
+        data: []
     },
-    code:{
-        data:[]
+    code: {
+        data: []
     },
-    units:{
-        data:[]
-    }
+    units: {
+        data: []
+    },
+    sale: {
+        data: [],
+        
+    },
 }

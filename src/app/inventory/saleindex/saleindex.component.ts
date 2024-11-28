@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryService } from '../inventory.service';
 import { DatePipe, Location } from '@angular/common';
-import { INewSale } from 'src/app/shared/interface/INewSale';
-import { internal } from 'src/app/shared/interface/internal-standard';
+import { INewSale } from '../supportive/interfaces/INewSale';
+import { internal } from '../supportive/interfaces/internal-standard';
+
 
 @Component({
   selector: 'app-saleindex',

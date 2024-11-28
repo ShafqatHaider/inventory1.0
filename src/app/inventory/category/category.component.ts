@@ -3,10 +3,9 @@ import { InventoryService } from '../inventory.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DatePipe, Location } from '@angular/common';
-import { UsermanagmentService } from 'src/app/userManagement/usermanagment.service';
-import { ToastrService } from 'ngx-toastr';
-import { ICategory } from '../../shared/interface/ICategory';
-import { internal } from 'src/app/shared/interface/internal-standard';
+import { ICategory } from '../supportive/interfaces/ICategory';
+import { internal } from '../supportive/interfaces/internal-standard';
+
 declare var window: any;
 
 @Component({
@@ -33,14 +32,14 @@ loading:boolean=false;
   bit = 0;
   branchName=internal.branchName
   constructor(
-    private _US: UsermanagmentService,
+    // private _US: UsermanagmentService,
     private formBuilder: FormBuilder,
     public _IS: InventoryService,
     public route: Router,
     public acroute: ActivatedRoute,
     public pipe: DatePipe,
     public location:Location,
-    private  toastr: ToastrService
+    // private  toastr: ToastrService
 
   ) {}
   assign: any;
@@ -58,19 +57,19 @@ getUserRoles(){
   this.assign = Number(localStorage.getItem('ASSIGN'));
   this.lcid = Number(localStorage.getItem('LINKED_COMPANY_ID'));
   this.groupId = Number(localStorage.getItem('GROUP_ID'));
-  this._US.getRolesById(this.lcid, this.groupId).subscribe((rep) => {
-    this.userRoles = rep.userDetails;
-    if (this.userRoles) {
-      this.elem = this.userRoles.filter((e: any) => {
-        this.formName = e.formName;
-        if (this.formName == 'Category') {
-          this.isRead = e.cRead;
-          this.isWrite = e.cWrite;
-          this.isDelete = e.cDelete;
-        }
-      });
-    }
-  });
+  // this._US.getRolesById(this.lcid, this.groupId).subscribe((rep) => {
+  //   this.userRoles = rep.userDetails;
+  //   if (this.userRoles) {
+  //     this.elem = this.userRoles.filter((e: any) => {
+  //       this.formName = e.formName;
+  //       if (this.formName == 'Category') {
+  //         this.isRead = e.cRead;
+  //         this.isWrite = e.cWrite;
+  //         this.isDelete = e.cDelete;
+  //       }
+  //     });
+  //   }
+  // });
 
 }
 getLocalStoreData(){
@@ -143,7 +142,7 @@ getDate(){
         {
           
           this.category=new ICategory();
-          this.toastr.success('New category created Successfully!!', 'Success!');
+          // this.toastr.success('New category created Successfully!!', 'Success!');
           this.loading=false;
           this.ngOnInit();
         }
@@ -151,14 +150,14 @@ getDate(){
       if(this.cateId)
         {
           this.category=new ICategory();
-          this.toastr.success('category Updated Successfully!!', 'Success!');
+          // this.toastr.success('category Updated Successfully!!', 'Success!');
           this.loading=false;
           this.ngOnInit();
         }
      
       },
       error=>{
-        this.toastr.warning('Duplicate record found!!', 'Error!');
+        // this.toastr.warning('Duplicate record found!!', 'Error!');
         this.loading=false;
       //  alert (`${error.error} `)
        this.category=new ICategory();
@@ -206,17 +205,17 @@ getDate(){
   delete(cate: any) {
 
     if(cate.used!==0){
-      this.toastr.warning('This Categody is used, you cannot delete this category.','Alert')
+      // this.toastr.warning('This Categody is used, you cannot delete this category.','Alert')
       
     }
     else{
       var result = confirm('Do you want to delete?');
-      if (result) {
-        this._IS.deleteCategory(cate.cateID).subscribe((res) => {
-          res ?? this.toastr.error('Category has been delete successfully!!','Info');
-          this.ngOnInit();
-        });
-      }   
+      // if (result) {
+      //   this._IS.deleteCategory(cate.cateID).subscribe((res) => {
+      //     res ?? this.toastr.error('Category has been delete successfully!!','Info');
+      //     this.ngOnInit();
+      //   });
+      // }   
     }
    
    

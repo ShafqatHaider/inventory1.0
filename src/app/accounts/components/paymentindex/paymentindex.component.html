@@ -1,1 +1,12 @@
-<p>paymentindex works!</p>
+<app-shared-table
+[tableTitle]="'Payment Index'"
+[tableHeaders]="['Id','Date']"
+[tableKeys]="['cid','eDate']"
+[tableData]="config.data"
+[dateFields]="['eDate']"
+(newClick)="add()"
+(edit)="edit()"
+(delete)="delete()"
+[isAction]="true"
+[isNewAction]="true"
+/>

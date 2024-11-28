@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { EMPTY, Observable, catchError, expand, map, reduce, retry, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { IBrand } from '../shared/interface/IBrand';
-import { IBarcoding } from '../shared/interface/IBarcoding';
-import { ICategory } from '../shared/interface/ICategory';
-import { IDepartment } from '../shared/interface/IDepartment';
-import { IGroup } from '../shared/interface/IGroup';
-import { ISubCate } from '../shared/interface/ISubcategory';
-import { ICodeCoding } from '../shared/interface/ICodeCoding';
-import { IPurchase } from '../shared/interface/IPurchase';
-import { INewSale } from '../shared/interface/INewSale';
-import { IBranchInfo } from '../shared/interface/IBranchInfo';
-import { IInvoiceVar } from '../shared/interface/IInvoiceVar';
-import { IMeasurement } from '../shared/interface/IMeasurement';
-import { IGodown } from '../shared/interface/IGodown';
-import { ICodeEType } from '../shared/interface/ICodeEType';
-
+import { environment } from '../../environment/environment';
+import { IBrand } from './supportive/interfaces/IBrand';
+import { IBarcoding } from './supportive/interfaces/IBarcoding';
+import { ICategory } from './supportive/interfaces/ICategory';
+import { IDepartment } from './supportive/interfaces/IDepartment';
+import { IGroup } from './supportive/interfaces/IGroup';
+import { ISubCate } from './supportive/interfaces/ISubcategory';
+import { ICodeCoding } from './supportive/interfaces/ICodeCoding';
+import { IPurchase } from './supportive/interfaces/IPurchase';
+import { INewSale } from './supportive/interfaces/INewSale';
+import { IBranchInfo } from './supportive/interfaces/IBranchInfo';
+import { IInvoiceVar } from './supportive/interfaces/IInvoiceVar';
+import { IMeasurement } from './supportive/interfaces/IMeasurement';
+import { IGodown } from './supportive/interfaces/IGodown';
+import { ICodeEType } from './supportive/interfaces/ICodeEType';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,17 +28,14 @@ export class InventoryService {
   companyid=localStorage.getItem('COMPANY_ID');
   branchid=localStorage.getItem('BRANCH_ID');
   constructor(private http: HttpClient) { }
-
   /*-----------------------BRAND------------------------------*/ 
   saveBrand(brand:IBrand): Observable<any> 
   {
-     // 
     let url=this.rootUrl+"CodeCodingBrand/create";
     return this.http.post<any>(url,brand);
   }
   saveCodeWithBarcode(barcode:IBarcoding): Observable<any> 
   {
-     // 
     let url=this.rootUrl+"CodeCodings/createBarcode";
     return this.http.post<any>(url,barcode);
   }
@@ -61,8 +57,7 @@ export class InventoryService {
   }
   /*-----------------------CATEGORY------------------------------*/ 
   saveCategory(category:ICategory): Observable<any> 
-  {
-     // 
+  { 
     let url=this.rootUrl+"CodeCodingCategory/create";
     return this.http.post<any>(url,category);
   }
@@ -73,7 +68,6 @@ export class InventoryService {
   }
   getCategoryById(id:any): Observable<any> 
   {
-     //debugger
     let url = this.rootUrl+"CodeCodingCategory/GetCateById/"+this.companyid+'/'+ id
     return this.http.get<any>(url);
   }
@@ -86,7 +80,6 @@ export class InventoryService {
   /*-----------------------DEPARTMENT------------------------------*/ 
   saveDeptt(deptt:IDepartment): Observable<any> 
   {
-     // 
     let url=this.rootUrl+"CodeCodingDepartment/create";
     return this.http.post<any>(url,deptt);
   }
@@ -440,12 +433,10 @@ getSalesInvoice(id:any):Observable<any>
 {
   let url = this.rootUrl+'RptSales/GetSalesInvoice/'+this.companyid+'/'+this.branchid+'/'+id;
   return this.http.get(url, {headers:this.headers})
-
 }
 getPurchaseInvoice(id:any):Observable<any>
 {
   let url = this.rootUrl+'RptSales/GetPurchaseInvoice/'+this.companyid+'/'+this.branchid+'/'+id;
   return this.http.get(url, {headers:this.headers})
-
 }
 }

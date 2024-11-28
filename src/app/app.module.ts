@@ -16,13 +16,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
     NavbarComponent,
     SidebarComponent,
     DashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgSelectModule
+    NgSelectModule,
     
   ],
   providers: [DatePipe],
