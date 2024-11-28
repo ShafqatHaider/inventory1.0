@@ -25,25 +25,32 @@
         </ng-container>
         </ul>
       </li>
-      <li class="list-group-item">
+     <!-- INVENTORY -->
+      <li class="list-group-item" >
         <a
           class="nav-link"
-          href="#"
-          (click)="toggleMenu('payables')"
-          [attr.aria-expanded]="dropdowns.payables"
+          
+          (click)="toggleMenu('receivables')"
+          [attr.aria-expanded]="dropdowns.receivables"
         >
-          Payables
+          Accounts
           <i class="bi bi-chevron-down float-end"></i>
         </a>
         <ul
           class="list-group ps-3"
-          *ngIf="dropdowns.payables"
-          style="list-style: none;"
+          *ngIf="dropdowns.receivables"
+          style="list-style: none;
+          "
+          
         >
-          <li class="list-group-item"><a href="#">Bills</a></li>
-          <li class="list-group-item"><a href="#">Vendors</a></li>
+        <ng-container *ngFor="let item of config.accounting">
+          <li class="list-group-item"><a [routerLink]="item.path">{{item.componentName}}</a></li>
+        </ng-container>
         </ul>
       </li>
+      <li class="list-group-item">
+        <a class="nav-link" [routerLink]="config.reporting.path">{{config.reporting.componentName}}</a>
+      </li>   
     </ul>
   </div>
   

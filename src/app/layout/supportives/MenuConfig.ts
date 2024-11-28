@@ -8,9 +8,11 @@ export const MenuConfig={
             {componentName:'Payments',path:'/Accounts/payment-index'},
         ],
         inventory:{},
-        reporting:[
-            {componentName:'Reports',path:'/Reports/report-index'},
-        ],
+        reporting:{
+
+            componentName:'Reports',path:'/reports/report-index'
+        }
+        
         
 
     }
