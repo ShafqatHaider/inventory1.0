@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ReportsService } from '../../reports.service';
 import { DatePipe, Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SnakbarService } from 'src/app/ui/components/alert/snakbar.service';
 import { ILedgerMain, details } from '../interfaces/ILedgerNew';
 
 @Component({
@@ -19,7 +18,7 @@ balance:any; folio='';bal:any; totaldr=0; totalcr=0;
 isData=false; accArr=[];sAccName:any;todayDate:any; folios=[];
 currentTime:any;mobileNo:any; closingBalance=0;
   constructor(private service: ReportsService, private pipe:DatePipe,private location:Location, 
-    private route:Router, private acroute:ActivatedRoute, public Service:SnakbarService) { }
+    private route:Router, private acroute:ActivatedRoute) { }
 
   ngOnInit(): void {
     const currentDate = this.pipe.transform(new Date(), 'yyyy-MM-dd');
@@ -106,7 +105,7 @@ getReport()
      else
      {
       this.isData=false;
-      this.Service.error('No Data Found');
+
       this.pdfGo=0
      }
       })
@@ -154,7 +153,7 @@ getReport()
      else
      {
       this.isData=false;
-      this.Service.error('No Data Found');
+
       this.pdfGo=0
      }
       })

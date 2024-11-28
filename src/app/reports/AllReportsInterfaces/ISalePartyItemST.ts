@@ -4,7 +4,7 @@ export class ISalePartyItemST{
     totalPartyQty:number=0;
     totalPartyReturnQty:number=0;
     totalPartyMargin:number=0;
-    Products=new Array<Products>();
+    products=new Array<Products>();
 }
 export class Products{
     fcid:number=0;
@@ -13,7 +13,7 @@ export class Products{
     totalCodeReturnQty:number=0;
     totalCodeMargin:number=0;
    
-Bills=new Array<Bills>();
+bills=new Array<Bills>();
 
 }
 export class Bills{

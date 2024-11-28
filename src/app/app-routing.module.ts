@@ -7,7 +7,11 @@ const routes: Routes = [
   {path:'dashboard', component:DashboardComponent},
   {
     path: 'Accounts',
-    loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule)
+    loadChildren: () => import('./accounts/accounts.module').then(m => m.AccountsModule),
+  },
+  {
+    path: 'Reports',
+    loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
   }
 ];
 

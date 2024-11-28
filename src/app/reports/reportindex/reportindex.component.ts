@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { internal } from 'src/app/shared/interface/internal-standard';
+
 
 @Component({
   selector: 'app-reportindex',
@@ -9,7 +9,7 @@ import { internal } from 'src/app/shared/interface/internal-standard';
 })
 export class ReportindexComponent implements OnInit {
   constructor(public route: Router) {}
-  branchName=internal.branchName
+
   ngOnInit(): void {}
   partyLedger = () => this.route.navigate(['/reports/account-Ledger']);
   trailBal = () => this.route.navigate(['/reports/trial-balance']);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgressService } from 'src/app/services/progress.service';
+// import { ProgressService } from 'src/app/services/progress.service';
 
 @Component({
   selector: 'app-progress-bar',
@@ -8,12 +8,18 @@ import { ProgressService } from 'src/app/services/progress.service';
 })
 export class ProgressBarComponent implements OnInit {
   progress: number = 0;
-
-  constructor(private progressService: ProgressService) {}
+/**
+ *
+ */
+constructor() {
+  
+  
+}
+  // constructor(private progressService: ProgressService) {}
 
   ngOnInit(): void {
-    this.progressService.progress$.subscribe((progress) => {
-      this.progress = progress;
-    });
+    // this.progressService.progress$.subscribe((progress) => {
+    //   this.progress = progress;
+    // });
   }
 }

@@ -3,7 +3,7 @@ import { CommonModule, DatePipe, Location } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IDaybookRepo } from '../interfaces/IDaybookRepo';
 import { ReportsService } from '../../reports.service';
-import { ProgressService } from 'src/app/services/progress.service';
+
 @Component({
   selector: 'app-dbreport',
   templateUrl: './dbreport.component.html',
@@ -27,7 +27,7 @@ export class DbreportComponent implements OnInit {
     public pipe: DatePipe,
     public location: Location,
     private acroute: ActivatedRoute,
-    private progressService: ProgressService
+
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class DbreportComponent implements OnInit {
   }
   getReport() {
     debugger
-    this.progressService.startProgress();
+
    if(this.transType)
    {
   
@@ -78,12 +78,12 @@ export class DbreportComponent implements OnInit {
             }
           }
         }
-        this.progressService.endProgress();
+
       }
       else
       {
         this.isData=false;
-        this.progressService.endProgress();
+
       }
     });
    }
@@ -111,12 +111,12 @@ export class DbreportComponent implements OnInit {
             }
           }
         }
-        this.progressService.endProgress();
+
       }
       else
       {
         this.isData=false;
-        this.progressService.endProgress();
+
       }
     });
    }

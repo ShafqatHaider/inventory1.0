@@ -1,9 +1,16 @@
 export const MenuConfig={
     menuList:{
         dashboard:'',
-        accounting:{},
+        accounting:[
+            {componentName:'Accounts',path:'/Accounts/account-index'},
+            {componentName:'Daybooks',path:'/Accounts/daybook-index'},
+            {componentName:'Receipts',path:'/Accounts/rbook-index'},
+            {componentName:'Payments',path:'/Accounts/payment-index'},
+        ],
         inventory:{},
-        reporting:{},
+        reporting:[
+            {componentName:'Reports',path:'/Reports/report-index'},
+        ],
         
 
     }

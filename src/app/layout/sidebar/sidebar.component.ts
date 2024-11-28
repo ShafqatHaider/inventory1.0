@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../supportives/sidbar.service';
+import { MenuConfig } from '../supportives/MenuConfig';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,7 +13,7 @@ export class SidebarComponent {
     receivables: false,
     payables: false,
   };
-
+  config=MenuConfig.menuList
   constructor(public sidebarService: SidebarService) {}
 
   toggleMenu(menu: string) {

@@ -11,8 +11,6 @@ import { ItemledgerComponent } from './InventoryReport/itemledger/itemledger.com
 import { DailycashreportComponent } from './AccountReport/dailycashreport/dailycashreport.component';
 import { StockprofitComponent } from './SalesReports/stockprofit/stockprofit.component';
 import { PurchasepartyitemComponent } from './PurchaseReports/purchasepartyitem/purchasepartyitem.component';
-import { FilterPipe } from '../pipe/filter.pipe';
-import { SnakbarComponent } from '../ui/components/alert/snakbar.component';
 import { DbreportComponent } from './AccountReport/dbreport/dbreport.component';
 import { ItempartystComponent } from './SalesReports/itempartyst/itempartyst.component';
 import { ItemwiseprofitComponent } from './SalesReports/itemwiseprofit/itemwiseprofit.component';
@@ -31,6 +29,7 @@ import { PurchaseitempartyComponent } from './PurchaseReports/purchaseitemparty/
 import { PurchasepartyitemstComponent } from './PurchaseReports/purchasepartyitemst/purchasepartyitemst.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { SalepartyitemstComponent } from './SalesReports/salepartyitemst/salepartyitemst.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -64,9 +63,6 @@ import { SalepartyitemstComponent } from './SalesReports/salepartyitemst/salepar
     PurchasepartyitemComponent,
     PurchasebillwiseComponent,
     IssummaryComponent,
-    ProgressBarComponent,
-    FilterPipe,
-    SnakbarComponent,
     SalepartyitemstComponent,
   ],
   imports: [
@@ -75,7 +71,8 @@ import { SalepartyitemstComponent } from './SalesReports/salepartyitemst/salepar
     NgSelectModule,
     FormsModule,
     DatePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
 })
 export class ReportsModule {}

@@ -3,7 +3,7 @@
       <li class="list-group-item">
         <a class="nav-link" href="#">Dashboard</a>
       </li>
-      <li class="list-group-item">
+      <li class="list-group-item" >
         <a
           class="nav-link"
           
@@ -16,10 +16,13 @@
         <ul
           class="list-group ps-3"
           *ngIf="dropdowns.receivables"
-          style="list-style: none;"
+          style="list-style: none;
+          "
+          
         >
-          <li class="list-group-item"><a [routerLink]="'Accounts/account-index'">Accounts</a></li>
-          <li class="list-group-item"><a href="#">Payments</a></li>
+        <ng-container *ngFor="let item of config.accounting">
+          <li class="list-group-item"><a [routerLink]="item.path">{{item.componentName}}</a></li>
+        </ng-container>
         </ul>
       </li>
       <li class="list-group-item">
