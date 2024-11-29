@@ -22,6 +22,13 @@ const routes: Routes = [
   },
   {
     path:'subcategory-index', component:SubcategoryIndexComponent
+  },
+  {
+    path:'sale-index', component:SaleIndexComponent
+  }
+  ,
+  {
+    path:'purchase-index', component:PurchaseIndexComponent
   }
 ];
 
