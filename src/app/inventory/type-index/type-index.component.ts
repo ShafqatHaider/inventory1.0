@@ -45,7 +45,7 @@ export class TypeIndexComponent {
 
   openEditModal(param: any) {
     debugger
-    // this.config.model=param;
+    this.config.model=param;
     this.modalTitle = 'Edit Type';
     this.currentTemplate = this.editTemplate;
     this.modalService.initModal('reusableModal');

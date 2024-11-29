@@ -4,7 +4,7 @@
   [tableKeys]="['cid', 'eType']"
   [tableData]="config.data"
   (newClick)="add()"
-  (edit)="edit()"
+  (edit)="openEditModal($event)"
   (delete)="delete($event)"
   [isAction]="true"
   [isNewAction]="true"
