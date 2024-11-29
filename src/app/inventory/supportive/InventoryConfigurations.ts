@@ -13,12 +13,15 @@ export const InventoryConfigurations = {
     },
     sale: {
         data: [],
-        
+
     },
-    puchase:{
-        data:[]
+    puchase: {
+        data: []
     },
-    types:{
-        data:[]
+    types: {
+        data: []
+    },
+    warehouse: {
+        data: []
     }
 }
