@@ -3,6 +3,8 @@ import { Observables } from '../../shared/services/observers';
 import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
 import { ModalService } from '../../shared/_components/modal/modal.service';
 import { ModalComponent } from '../../shared/_components/modal/modal.component';
+import { ICategory } from '../supportive/interfaces/ICategory';
+import { TransactionService } from '../supportive/services/transaction.service';
 
 @Component({
   selector: 'app-category-index',
@@ -14,7 +16,7 @@ export class CategoryIndexComponent {
   /**
    *
    */
-  constructor(private observer:Observables,private modalService: ModalService) {
+  constructor(private observer:Observables,private modalService: ModalService, private _trans: TransactionService) {
     
     
   }
@@ -23,11 +25,20 @@ export class CategoryIndexComponent {
     this.getData();
   }
   getData(){
-    this.observer.getLookups(`${this.config.data}`)
+    this.observer.getLookups(`${this.config.endpoints.getAll}`).subscribe(res=>{
+      this.config.data=res;
+      // console.log(res)
+    })
   }
-  add(){this.openCreateModal()}
-  edit(){}
-  delete(){}
+
+delete(param:any){
+    if(confirm('Do you want to delete the recored?'))
+    this.observer.delete(`${this.config.endpoints.delete(param.cateId)}`).subscribe(res=>{
+      alert('Record deleted successfully!')
+      
+    })
+    this.getData();
+  }
   
   
   
@@ -46,8 +57,25 @@ editItemName = '';
 disableSave = true;
 modalSize:any;
 
-
+save(){
+  if(this.config.model.title){
+  this.observer.create(this.config.endpoints.create, this.config.model).subscribe(res=>{
+    if(res)
+    {
+      alert('Record created successfully!');
+      this.getData();
+      this.modalService.close();
+     this.reset(); 
+    }
+  })
+}
+else{
+  alert('Please add category name first')
+}
+}
+reset(){this.config.model=new ICategory()}
 openCreateModal() {
+  debugger
   this.modalTitle ='Create New Category' ;
 
   this.currentTemplate = this.createTemplate;
@@ -57,7 +85,7 @@ openCreateModal() {
 
 openEditModal(param:any) {
   debugger
-  // this.config.model=param;
+  this.config.model=param;
   this.modalTitle = 'Edit Category';
   this.currentTemplate = this.editTemplate;
   this.modalService.initModal('reusableModal');

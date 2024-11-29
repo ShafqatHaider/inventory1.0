@@ -9,6 +9,7 @@ import { InpTextareaComponent } from './_components/inp-textarea/inp-textarea.co
 import { NgSelectModule } from '@ng-select/ng-select';
 import { InpDateComponent } from './_components/inp-date/inp-date.component';
 import { ModalComponent } from './_components/modal/modal.component';
+import { AutoFocusDirective } from './services/focus.directive';
 
 
 
@@ -21,7 +22,8 @@ import { ModalComponent } from './_components/modal/modal.component';
     InpFieldComponent,
     InpTextareaComponent,
     InpDateComponent,
-    ModalComponent
+    ModalComponent,
+    AutoFocusDirective
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { ModalComponent } from './_components/modal/modal.component';
     InpSelectComponent,
     InpFieldComponent,
     InpTextareaComponent,
-    ModalComponent    
+    ModalComponent,
+    AutoFocusDirective
   ]
 })
 export class SharedModule { }

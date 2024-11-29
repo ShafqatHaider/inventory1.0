@@ -1,11 +1,11 @@
 <app-shared-table
 [tableTitle]="'Category Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
+[tableHeaders]="['Id','Category Name']"
+[tableKeys]="['cateID','title']"
 [tableData]="config.data"
-(newClick)="add()"
-(edit)="edit()"
-(delete)="delete()"
+(newClick)="openCreateModal()"
+(edit)="openEditModal($event)"
+(delete)="delete($event)"
 [isAction]="true"
 [isNewAction]="true"
 >
@@ -18,8 +18,8 @@
       [title]="modalTitle"
       [template]="currentTemplate"
       [disableSave]="disableSave"
+      (save)="save()"
       />
-      <!-- (save)="onSave()" -->
 
     
     <ng-template #createTemplate>
@@ -31,8 +31,10 @@
             class="form-control"
             id="itemName"
             name="itemName"
+            [(ngModel)]="config.model.title"
+            appAutoFocus
+            (keyup.enter)="save()"
             />
-            <!-- [(ngModel)]="config.model.cateName" -->
         </div>
       </form>
     </ng-template>
@@ -46,8 +48,10 @@
             class="form-control"
             id="editItemName"
             name="editItemName"
+            [(ngModel)]="config.model.title"
+            appAutoFocus
+            (keyup.enter)="save()"
             />
-            <!-- [(ngModel)]="config.model.cateName" -->
         </div>
       </form>
     </ng-template>
