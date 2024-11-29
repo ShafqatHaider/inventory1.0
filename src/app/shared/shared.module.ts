@@ -8,6 +8,7 @@ import { InpFieldComponent } from './_components/inp-field/inp-field.component';
 import { InpTextareaComponent } from './_components/inp-textarea/inp-textarea.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { InpDateComponent } from './_components/inp-date/inp-date.component';
+import { ModalComponent } from './_components/modal/modal.component';
 
 
 
@@ -20,6 +21,7 @@ import { InpDateComponent } from './_components/inp-date/inp-date.component';
     InpFieldComponent,
     InpTextareaComponent,
     InpDateComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { InpDateComponent } from './_components/inp-date/inp-date.component';
     InpSelectComponent,
     InpFieldComponent,
     InpTextareaComponent,
-    
+    ModalComponent    
   ]
 })
 export class SharedModule { }
