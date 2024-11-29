@@ -32,11 +32,8 @@ export class UnitIndexComponent {
   editItemName = '';
   disableSave = true;
   modalSize: any;
-
-
   openCreateModal() {
-    this.modalTitle = 'Unit';
-
+    this.modalTitle = 'Create New Unit';
     this.currentTemplate = this.createTemplate;
     this.modalService.initModal('reusableModal');
     this.modalService.open();

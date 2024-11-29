@@ -1,1 +1,43 @@
-<p>type-index works!</p>
+<app-shared-table
+  [tableTitle]="'Type Index'"
+  [tableHeaders]="['Id', 'Date']"
+  [tableKeys]="['cid', 'eDate']"
+  [tableData]="config.data"
+  (newClick)="add()"
+  (edit)="edit()"
+  (delete)="delete()"
+  [isAction]="true"
+  [isNewAction]="true"
+>
+</app-shared-table>
+<app-modal
+  #modal
+  [title]="modalTitle"
+  [template]="currentTemplate"
+  [disableSave]="disableSave"
+/>
+<!-- (save)="onSave()" -->
+<ng-template #createTemplate>
+  <form>
+    <div class="mb-3">
+      <label for="itemName" class="form-label">Title</label>
+      <input type="text" class="form-control" id="itemName" name="itemName" />
+      <!-- [(ngModel)]="config.model.cateName" -->
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #editTemplate>
+  <form>
+    <div class="mb-3">
+      <label for="editItemName" class="form-label">Edit Item Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="editItemName"
+        name="editItemName"
+      />
+      <!-- [(ngModel)]="config.model.cateName" -->
+    </div>
+  </form>
+</ng-template>

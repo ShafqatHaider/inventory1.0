@@ -11,12 +11,14 @@ import { SaleIndexComponent } from './sale-index/sale-index.component';
 import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
 import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
 import { TypeIndexComponent } from './type-index/type-index.component';
+import { SharedTableComponent } from '../shared/shared-table/shared-table.component';
+import { UnitIndexComponent } from './unit-index/unit-index.component';
 
 @NgModule({
   declarations: [
-    
-    
-    
+
+
+
     // PurchaseComponent,
     PurchaseIndexComponent,
     CategoryIndexComponent,
@@ -24,7 +26,10 @@ import { TypeIndexComponent } from './type-index/type-index.component';
     SaleIndexComponent,
     SubcategoryIndexComponent,
     WarehouseIndexComponent,
-    TypeIndexComponent
+    TypeIndexComponent,
+    UnitIndexComponent,
+    WarehouseIndexComponent,
+
     // StockadjustmentComponent, 
     // WarehouseComponent,
   ],
@@ -34,9 +39,10 @@ import { TypeIndexComponent } from './type-index/type-index.component';
     InventoryRoutingModule,
     NgSelectModule,
     ReactiveFormsModule,
-    SharedModule
-    
+    SharedModule,
+
+
   ],
-  providers:[]
+  providers: []
 })
 export class InventoryModule { }

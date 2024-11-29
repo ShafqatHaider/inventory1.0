@@ -1,16 +1,33 @@
+
+
 <div [ngClass]="{ 'd-none': !sidebarService.isOpen }" class="bg-light sidebar">
   <ul class="list-group">
+    <!-- Dashboard -->
     <li class="list-group-item">
-      <a class="nav-link" href="#">Dashboard</a>
+      <a class="nav-link d-flex align-items-center" href="#">
+        <i class="bi bi-speedometer2 me-2"></i> <!-- Dashboard Icon -->
+        Dashboard
+      </a>
     </li>
+
+    <!-- Accounts -->
     <li class="list-group-item">
       <a
-        class="nav-link"
+        class="nav-link d-flex justify-content-between align-items-center"
         (click)="toggleMenu('receivables')"
         [attr.aria-expanded]="dropdowns.receivables"
       >
-        Accounts
-        <i class="bi bi-chevron-down float-end"></i>
+        <span>
+          <i class="bi bi-wallet2 me-2"></i> <!-- Accounts Icon -->
+          Accounts
+        </span>
+        <i
+          class="bi"
+          [ngClass]="{
+            'bi-chevron-down': !dropdowns.receivables,
+            'bi-chevron-up': dropdowns.receivables
+          }"
+        ></i>
       </a>
       <ul
         class="list-group ps-3"
@@ -19,37 +36,57 @@
       >
         <ng-container *ngFor="let item of config.accounting">
           <li class="list-group-item">
-            <a [routerLink]="item.path">{{ item.componentName }}</a>
+            <a [routerLink]="item.path" class="d-flex align-items-center">
+              <i class="bi bi-file-earmark me-2"></i> <!-- Item Icon -->
+              {{ item.componentName }}
+            </a>
           </li>
         </ng-container>
       </ul>
     </li>
-    <!-- INVENTORY -->
+
+    <!-- Inventory -->
     <li class="list-group-item">
       <a
-        class="nav-link"
-        (click)="toggleMenu('receivables')"
-        [attr.aria-expanded]="dropdowns.receivables"
+        class="nav-link d-flex justify-content-between align-items-center"
+        (click)="toggleMenu('inventory')"
+        [attr.aria-expanded]="dropdowns.inventory"
       >
-        Inventory
-        <i class="bi bi-chevron-down float-end"></i>
+        <span>
+          <i class="bi bi-box-seam me-2"></i> <!-- Inventory Icon -->
+          Inventory
+        </span>
+        <i
+          class="bi"
+          [ngClass]="{
+            'bi-chevron-down': !dropdowns.inventory,
+            'bi-chevron-up': dropdowns.inventory
+          }"
+        ></i>
       </a>
       <ul
         class="list-group ps-3"
-        *ngIf="dropdowns.receivables"
+        *ngIf="dropdowns.inventory"
         style="list-style: none"
       >
         <ng-container *ngFor="let item of config.inventory">
           <li class="list-group-item">
-            <a [routerLink]="item.path">{{ item.componentName }}</a>
+            <a [routerLink]="item.path" class="d-flex align-items-center">
+              <i class="bi bi-grid-3x3-gap me-2"></i> <!-- Item Icon -->
+              {{ item.componentName }}
+            </a>
           </li>
         </ng-container>
       </ul>
     </li>
+
+    <!-- Reporting -->
     <li class="list-group-item">
-      <a class="nav-link" [routerLink]="config.reporting.path">{{
-        config.reporting.componentName
-      }}</a>
+      <a class="nav-link d-flex align-items-center" [routerLink]="config.reporting.path">
+        <i class="bi bi-bar-chart-line me-2"></i> <!-- Reporting Icon -->
+        {{ config.reporting.componentName }}
+      </a>
     </li>
   </ul>
 </div>
+
