@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class IWarehouse {
     goCid: number = 0;
     eDate: Date = new Date();
@@ -9,9 +11,9 @@ export class IWarehouse {
     addressU: string = '';
     address: string = '0';
     description: string = '';
-    companyID: number = Number(localStorage.getItem('COMPANY_ID'));
-    branchID: number = Number(localStorage.getItem('BRANCH_ID'));
-    operatorID: number = Number(localStorage.getItem('OPERATOR_ID'));
+    companyID: number = environment.companyId;
+    branchID: number = environment.branchId;
+    operatorID: number =0;
 }
 
 

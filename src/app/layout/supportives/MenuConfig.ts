@@ -8,7 +8,7 @@ export const MenuConfig = {
             { componentName: 'Payments', path: '/Accounts/payment-index' },
         ],
         inventory: [
-            { componentName: 'Category', path: '/inventory/category-index' },
+            { componentName: 'Category', path: '/inventory/category-index'},
             { componentName: 'Code', path: '/inventory/code-index' },
             { componentName: 'Purchase', path: '/inventory/purchase-index' },
             { componentName: 'Sale', path: '/inventory/sale-index' },

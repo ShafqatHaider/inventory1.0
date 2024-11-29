@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class ICodeCoding{
         cid:number=0;
 		eDate:Date=new Date();
@@ -14,9 +16,9 @@ export class ICodeCoding{
 		saleRate:number=0;
 		reorderLevelQty:number=0;
 		itemDescription:string='';
-		companyID:number=Number(localStorage.getItem('COMPANY_ID'));
-		branchID:number=Number(localStorage.getItem('BRANCH_ID'));
-		operatorID:number=Number(localStorage.getItem('OPERATOR_ID'));
+		companyID:number=environment.companyId
+		branchID:number=environment.branchId
+		operatorID:number=0;
 		brandID:number=0;
 		colours:string='0';
 		commPer:number=0;
@@ -36,7 +38,7 @@ export class ICodeCoding{
         txt1:string='0';
         txt2:string='0';
         txt3:string='0';
-		codeDetails: ICodeCodingSub[]=new Array();
+		//codeDetails: ICodeCodingSub[]=new Array();
 }
 
 
