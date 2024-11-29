@@ -17,5 +17,8 @@ export const InventoryConfigurations = {
     },
     puchase:{
         data:[]
+    },
+    types:{
+        data:[]
     }
 }
