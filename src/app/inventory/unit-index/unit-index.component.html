@@ -3,9 +3,9 @@
   [tableHeaders]="['Id', 'Date']"
   [tableKeys]="['cid', 'eDate']"
   [tableData]="config.data"
-  (newClick)="add()"
-  (edit)="edit()"
-  (delete)="delete()"
+  (newClick)="openCreateModal()"
+  (edit)="openEditModal($event)"
+  (delete)="delete($event)"
   [isAction]="true"
   [isNewAction]="true"
 >
@@ -16,15 +16,20 @@
   [title]="modalTitle"
   [template]="currentTemplate"
   [disableSave]="disableSave"
+
+            (save)="save()"
 />
-<!-- (save)="onSave()" -->
 
 <ng-template #createTemplate>
   <form>
     <div class="mb-3">
       <label for="itemName" class="form-label">Title</label>
-      <input type="text" class="form-control" id="itemName" name="itemName" />
-      <!-- [(ngModel)]="config.model.cateName" -->
+      <input type="text" class="form-control" id="itemName" name="itemName" 
+      [(ngModel)]="config.model.measurementName"
+      appAutoFocus
+      (keyup.enter)="save()"
+      />
+      
     </div>
   </form>
 </ng-template>
@@ -38,8 +43,11 @@
         class="form-control"
         id="editItemName"
         name="editItemName"
+        [(ngModel)]="config.model.measurementName"
+        appAutoFocus
+        (keyup.enter)="save()"
       />
-      <!-- [(ngModel)]="config.model.cateName" -->
+      
     </div>
   </form>
 </ng-template>

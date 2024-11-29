@@ -13,9 +13,7 @@ import { TransactionService } from '../supportive/services/transaction.service';
 })
 export class CategoryIndexComponent {
   config= InventoryConfigurations.category;
-  /**
-   *
-   */
+ 
   constructor(private observer:Observables,private modalService: ModalService, private _trans: TransactionService) {
     
     
@@ -33,7 +31,7 @@ export class CategoryIndexComponent {
 
 delete(param:any){
     if(confirm('Do you want to delete the recored?'))
-    this.observer.delete(`${this.config.endpoints.delete(param.cateId)}`).subscribe(res=>{
+    this.observer.delete(`${this.config.endpoints.delete(param.cateID)}`).subscribe(res=>{
       alert('Record deleted successfully!')
       
     })
