@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InventoryService } from '../inventory.service';
 import { DatePipe, Location } from '@angular/common';
-import { IPurchase } from 'src/app/shared/interface/IPurchase';
-import { internal } from 'src/app/shared/interface/internal-standard';
+import { IPurchase } from '../supportive/interfaces/IPurchase';
+import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
+
 
 @Component({
   selector: 'app-purchase-index',
@@ -11,8 +12,13 @@ import { internal } from 'src/app/shared/interface/internal-standard';
   styleUrls: ['./purchase-index.component.scss']
 })
 export class PurchaseIndexComponent implements OnInit {
-  branchName=internal.branchName
+  // branchName=internal.branchName
+
+
+  config=InventoryConfigurations.puchase;
   purchase = new Array <IPurchase>();
+  add(){}
+  
   filterTerm: string = '';
   formModal: any;
   cId: any;
