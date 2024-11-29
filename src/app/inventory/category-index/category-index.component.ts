@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CategoryComponent } from '../category/category.component';
 import { Observables } from '../../shared/services/observers';
 import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
 

@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CategoryIndexComponent } from './category-index/category-index.component';
 import { CodeIndexComponent } from './code-index/code-index.component';
 import { SaleIndexComponent } from './sale-index/sale-index.component';
+import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
+import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,11 @@ import { SaleIndexComponent } from './sale-index/sale-index.component';
     PurchaseIndexComponent,
     CategoryIndexComponent,
     CodeIndexComponent,
+    SaleIndexComponent,
+    SubcategoryIndexComponent,
+    WarehouseIndexComponent
     // StockadjustmentComponent, 
     // WarehouseComponent,
-     SaleIndexComponent,
   ],
   imports: [
     CommonModule,

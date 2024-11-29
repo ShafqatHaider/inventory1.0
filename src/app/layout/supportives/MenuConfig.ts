@@ -12,6 +12,7 @@ export const MenuConfig = {
             { componentName: 'Code', path: '/inventory/code-index' },
             { componentName: 'Purchase', path: '/inventory/purchase-index' },
             { componentName: 'Sale', path: '/inventory/sale-index' },
+            { componentName: 'Sub category', path: '/inventory/subcategory-index' },
         ],
         reporting: {
             componentName: 'Reports', path: '/reports/report-index'

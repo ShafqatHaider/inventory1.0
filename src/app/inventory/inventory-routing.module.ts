@@ -2,54 +2,27 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CodeIndexComponent } from './code-index/code-index.component';
 import { PurchaseIndexComponent } from './purchase-index/purchase-index.component';
+import { SaleIndexComponent } from './sale-index/sale-index.component';
+import { CategoryIndexComponent } from './category-index/category-index.component';
+import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'code', pathMatch:'full'},
-  // {
-  //   path:'code', component:NewcodeComponent
-  // },
-  // {
-  //   path:'code/:cid', component:NewcodeComponent
-  // },
-  {
+ {
     path:'code-index', component:CodeIndexComponent
   },
-  // {
-  //   path:'saletax-invoice', component:SalewithstComponent
-  // },
-  // {
-  //   path:'saletax-invoice/:smId', component:SalewithstComponent
-  // },
-  // {
-  //   path:'sale-invoice', component:NewsalesComponent
-  // },
-  // {
-  //   path:'sale-invoice/:smId', component:NewsalesComponent
-  // },
-  // {
-  //   path:'sale-index', component:SaleindexComponent
-  // },
-  // {
-  //   path:'category', component:CategoryComponent
-  // },
-  // {
-  //   path:'sub-category', component:SubcategoryComponent
-  // },
-  // {
-  //   path:'purchasetax-invoice', component:PurchasewithstComponent
-  // },
-  // {
-  //   path:'purchasetax-invoice/:pmId', component:PurchasewithstComponent
-  // },
-  // {
-  //   path:'purchase-voucher', component:Purchase2Component
-  // },
-  // {
-  //   path:'purchase-voucher/:pmId', component:Purchase2Component
-  // },
+  {
+    path:'sale-index', component:SaleIndexComponent
+  },
   {
     path:'purchase-index', component:PurchaseIndexComponent
   },
+  {
+    path:'category-index', component:CategoryIndexComponent
+  },
+  {
+    path:'subcategory-index', component:SubcategoryIndexComponent
+  }
 ];
 
 @NgModule({
