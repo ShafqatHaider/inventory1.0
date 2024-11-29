@@ -27,7 +27,7 @@ onDelete(e:any){
 config= AccountConfigurations.accounts;
 
 ngOnInit(): void {
-  
+ this.getData();
 }
 getData(){
   this.observers.getLookups(`${this.config.endPoints.getAll}`).subscribe(res=>{this.config.data=res})

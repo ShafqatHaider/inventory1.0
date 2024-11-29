@@ -5,7 +5,7 @@
   [tableData]="config.data"
   (newClick)="add()"
   (edit)="edit()"
-  (delete)="delete()"
+  (delete)="delete($event)"
   [isAction]="true"
   [isNewAction]="true"
 >
@@ -20,9 +20,8 @@
 <ng-template #createTemplate>
   <form>
     <div class="mb-3">
-      <label for="itemName" class="form-label">Title</label>
-      <input type="text" class="form-control" id="itemName" name="itemName" />
-      <!-- [(ngModel)]="config.model.cateName" -->
+      <label for="itemName" class="form-label">Create New Type</label>
+      <input type="text" class="form-control" id="itemName" name="itemName" [(ngModel)]="config.model.eType"/>
     </div>
   </form>
 </ng-template>
@@ -30,14 +29,15 @@
 <ng-template #editTemplate>
   <form>
     <div class="mb-3">
-      <label for="editItemName" class="form-label">Edit Item Name</label>
+      <label for="editItemName" class="form-label">Edit Type</label>
       <input
         type="text"
         class="form-control"
         id="editItemName"
         name="editItemName"
+        [(ngModel)]="config.model.eType"
       />
-      <!-- [(ngModel)]="config.model.cateName" -->
+      
     </div>
   </form>
 </ng-template>
