@@ -5,6 +5,9 @@ import { PurchaseIndexComponent } from './purchase-index/purchase-index.componen
 import { SaleIndexComponent } from './sale-index/sale-index.component';
 import { CategoryIndexComponent } from './category-index/category-index.component';
 import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
+import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
+import { TypeIndexComponent } from './type-index/type-index.component';
+import { UnitIndexComponent } from './unit-index/unit-index.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'code', pathMatch:'full'},
@@ -29,6 +32,16 @@ const routes: Routes = [
   ,
   {
     path:'purchase-index', component:PurchaseIndexComponent
+  },
+  {
+    path:'warehouse-index', component:WarehouseIndexComponent
+  },
+  {
+    path:'type-index', component:TypeIndexComponent
+  }
+  ,
+  {
+    path:'unit-index', component:UnitIndexComponent
   }
 ];
 

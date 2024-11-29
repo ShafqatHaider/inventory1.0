@@ -13,8 +13,11 @@ export const MenuConfig = {
             { componentName: 'Purchase', path: '/inventory/purchase-index' },
             { componentName: 'Sale', path: '/inventory/sale-index' },
             { componentName: 'Sub category', path: '/inventory/subcategory-index' },
-            { componentName: 'Purchase', path: '/inventory/purchase-index' },
-            { componentName: 'Sale', path: '/inventory/sale-index' },
+            
+            { componentName: 'Unit', path: '/inventory/unit-index' },
+            { componentName: 'Warehouse', path: '/inventory/warehouse-index' },
+            { componentName: 'Type', path: '/inventory/type-index' },
+            
         ],
         reporting: {
             componentName: 'Reports', path: '/reports/report-index'

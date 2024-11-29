@@ -10,6 +10,7 @@ import { CodeIndexComponent } from './code-index/code-index.component';
 import { SaleIndexComponent } from './sale-index/sale-index.component';
 import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index.component';
 import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
+import { TypeIndexComponent } from './type-index/type-index.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.compo
     CodeIndexComponent,
     SaleIndexComponent,
     SubcategoryIndexComponent,
-    WarehouseIndexComponent
+    WarehouseIndexComponent,
+    TypeIndexComponent
     // StockadjustmentComponent, 
     // WarehouseComponent,
   ],
