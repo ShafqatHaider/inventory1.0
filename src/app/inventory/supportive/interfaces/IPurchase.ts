@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class IPurchase {
         pMid:number=0;
         eDate:Date =new Date();
@@ -18,9 +20,9 @@ export class IPurchase {
         pandi:string ='';
         receiverID:number =0;
         remarks:string ='';
-        companyID:number=Number(localStorage.getItem('COMPANY_ID'));
-        operatorID:number =Number(localStorage.getItem('OPERATOR_ID'));;
-        branchID:number =Number(localStorage.getItem('BRANCH_ID'));;
+        companyID:number=environment.companyId;
+        operatorID:number =environment.operatorID;
+        branchID:number =environment.branchId;
         locationID:number =0;
         gSale:number =0;
         sReturn:number =0;

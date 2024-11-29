@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class IBrandLedgerInputs {
     brandID: number;
     fromDate: Date ;
@@ -9,7 +11,7 @@ export class IBrandLedgerInputs {
         this.brandID = 0;
         this.fromDate = new Date(-30);
         this.toDate = new Date();
-        this.branchID = Number(localStorage.getItem("BRANCH_ID"));
+        this.branchID = environment.branchId;
         this.folio = "";
        
         

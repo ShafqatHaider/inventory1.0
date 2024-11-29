@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class INewSaleDatail {
         sMid:number=0
         barcode:string ='';
@@ -16,8 +18,8 @@ export class INewSaleDatail {
         amount:number = 0;
         strg:string = '';
         saleType:number = 0;
-        companyID = Number(localStorage.getItem("COMPANY_ID"));
-        branchID = Number(localStorage.getItem("BRANCH_ID"));
+        companyID = environment.companyId;
+        branchID = environment.branchId;
         sType:string = '';
          n1: number= 0;
          n2: number= 0;
