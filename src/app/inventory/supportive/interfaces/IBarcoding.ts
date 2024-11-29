@@ -1,3 +1,5 @@
+import { environment } from "../../../../environment/environment";
+
 export class IBarcoding{
     cid:number=0;
     eDate:Date=new Date();
@@ -14,9 +16,9 @@ export class IBarcoding{
     saleRate:number=0;
     reorderLevelQty:number=0;
     itemDescription:string='';
-    companyID:number=Number(localStorage.getItem('COMPANY_ID'));
-    branchID:number=Number(localStorage.getItem('BRANCH_ID'));
-    operatorID:number=Number(localStorage.getItem('OPERATOR_ID'));
+    companyID:number=environment.companyId;
+    branchID:number=environment.branchId;
+    operatorID:number=environment.operatorID
     brandID:number=0;
     colours:string='';
     commPer:number=0;

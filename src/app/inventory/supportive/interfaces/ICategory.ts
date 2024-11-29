@@ -8,6 +8,6 @@ export class ICategory{
         titleU:string='';
         companyID:number=environment.companyId;
         branchID:number=environment.branchId;
-        operatorID:number=Number(localStorage.getItem('OPERATOR_ID'));
+        operatorID:number=environment.operatorID;
         used:number=0;
 }
