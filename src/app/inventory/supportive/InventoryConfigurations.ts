@@ -77,10 +77,10 @@ export const InventoryConfigurations = {
         data: [],
         model:new ICodeEType(),
       endpoints:{
-            create:`${environment.baseApiUrl}CodeCodingCategory/create`,
-            getAll:`${environment.baseApiUrl}CodeCodingCategory/GetAllCategories/${environment.companyId}`,
-            getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
-            delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
+            create:`${environment.baseApiUrl}CodeType/create`,
+            getAll:`${environment.baseApiUrl}CodeType/GetAllEtypes/${environment.companyId}`,
+            // getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
+            // delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
         },
     
     },

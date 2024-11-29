@@ -18,6 +18,7 @@ export class SaleIndexComponent {
   // getData(){
   //   this.observer.getLookups(`${this.config.endPoints.getAll}`)
   // }
+  
   add(){}
   edit(){}
   delete(){}
