@@ -24,6 +24,7 @@ export class SharedTableComponent implements OnInit, OnChanges{
   filterText: string=''; 
   filteredData: any[] = [];
   @Input() isReturnButton=false;
+  @Input() btnNext='';
 isLoading=false;
 isNotData=false;
   constructor(private filterService: FilterService, private pipe:DatePipe) {}

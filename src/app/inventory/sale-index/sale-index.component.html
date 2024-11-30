@@ -1,3 +1,4 @@
+<button [routerLink]="'inventory/saleinvoice'">Submit</button>
 <app-shared-table
 [tableTitle]="'Sale Index'"
 [tableHeaders]="['S#','Date','PartyName','Amount']"
@@ -9,6 +10,7 @@
 (delete)="delete()"
 [isAction]="true"
 [isNewAction]="true"
+[btnNext]="'New Sale'"
 ></app-shared-table>
 
   

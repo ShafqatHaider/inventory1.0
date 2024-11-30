@@ -45,7 +45,7 @@ const routes: Routes = [
     path:'unit-index', component:UnitIndexComponent
   },
   {
-    path:'saleinvoice', component:SaleinvoiceComponent
+    path:'sale-invoice', component:SaleinvoiceComponent
   }
 ];
 
