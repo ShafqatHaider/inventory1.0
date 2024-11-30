@@ -26,9 +26,13 @@ export class SaleIndexComponent {
   
   add(){}
   edit = (sale: any) => {
-     
-    this.route.navigate(['/inventory/saleinvoice/' + this.config.model.sMid]);
+    console.log('Sale ID:', this.config.model.sMid); // Debug log
+    if (this.config.model.sMid) {
+        this.route.navigate(['/inventory/sale-invoice/'+ this.config.model.sMid]); // Navigate with route
+    } else {
+        alert('Sale ID is missing!'); // Error handling
+    }
+};
 
-  };
   delete(){}
 }

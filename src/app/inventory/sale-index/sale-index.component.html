@@ -1,16 +1,17 @@
 
 <app-shared-table
-[tableTitle]="'Sale Index'"
-[tableHeaders]="['S#','Date','PartyName','Amount']"
-[tableKeys]="['sMid','eDate','sAccName','billAmount']"
-[tableData]="config.data"
-[dateFields]="['eDate']"
-(newClick)="add()"
-(edit)="edit(this.config.model.sMid)"
-(delete)="delete()"
-[isAction]="true"
-[isNewAction]="true"
-[btnNext]="'New Sale'"
+  [tableTitle]="'Sale Index'"
+  [tableHeaders]="['S#', 'Date', 'PartyName', 'Amount']"
+  [tableKeys]="['sMid', 'eDate', 'sAccName', 'billAmount']"
+  [tableData]="config.data"
+  [dateFields]="['eDate']"
+  (newClick)="add()"
+  (edit)="edit($event)" 
+  (delete)="delete()"
+  [isAction]="true"
+  [isNewAction]="true"
+  [btnNext]="'New Sale'"
 ></app-shared-table>
+
 
   
