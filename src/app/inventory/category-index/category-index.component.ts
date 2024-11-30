@@ -15,8 +15,6 @@ export class CategoryIndexComponent {
   config= InventoryConfigurations.category;
  
   constructor(private observer:Observables,private modalService: ModalService, private _trans: TransactionService) {
-    
-    
   }
   
   ngOnInit(): void {
@@ -25,7 +23,7 @@ export class CategoryIndexComponent {
   getData(){
     this.observer.getLookups(`${this.config.endpoints.getAll}`).subscribe(res=>{
       this.config.data=res;
-      // console.log(res)
+   
     })
   }
 

@@ -3,6 +3,7 @@ import { ICategory } from "./interfaces/ICategory";
 import { ICodeCoding } from "./interfaces/ICodeCoding";
 import { ICodeEType } from "./interfaces/ICodeEType";
 import { INewSale } from "./interfaces/INewSale";
+import { IPurchase } from "./interfaces/IPurchase";
 import { ISubCate } from "./interfaces/ISubcategory";
 import { IUnits } from "./interfaces/IUnits";
 import { IWarehouse } from "./interfaces/IWarehouse";
@@ -64,10 +65,10 @@ export const InventoryConfigurations = {
     },
     puchase: {
         data: [],
-        model:null,
+        model:new IPurchase(),
          endpoints:{
-            create:`${environment.baseApiUrl}CodeCodingCategory/create`,
-            getAll:`${environment.baseApiUrl}CodeCodingCategory/GetAllCategories/${environment.companyId}`,
+            create:`${environment.baseApiUrl}Purchases/createPurchase`,
+            getAll:`${environment.baseApiUrl}Purchases/GetAllPurchase/${environment.companyId}/${environment.branchId}`,
             getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
             delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
         },

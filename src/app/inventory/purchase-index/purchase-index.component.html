@@ -1,7 +1,7 @@
 <app-shared-table
 [tableTitle]="'Purchase Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
+[tableHeaders]="['S#','Date','Party','Amount']"
+[tableKeys]="['companyId','Date','title','Amount']"
 [tableData]="config.data"
 (newClick)="add()"
 (edit)="edit($event)"
