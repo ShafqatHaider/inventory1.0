@@ -8,6 +8,7 @@ import { SubcategoryIndexComponent } from './subcategory-index/subcategory-index
 import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.component';
 import { TypeIndexComponent } from './type-index/type-index.component';
 import { UnitIndexComponent } from './unit-index/unit-index.component';
+import { SaleinvoiceComponent } from './saleinvoice/saleinvoice.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'code', pathMatch:'full'},
@@ -42,6 +43,9 @@ const routes: Routes = [
   ,
   {
     path:'unit-index', component:UnitIndexComponent
+  },
+  {
+    path:'saleinvoice', component:SaleinvoiceComponent
   }
 ];
 

@@ -3,6 +3,7 @@ import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
 import { Observables } from '../../shared/services/observers';
 import { ModalService } from '../../shared/_components/modal/modal.service';
 import { TransactionService } from '../supportive/services/transaction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sale-index',
@@ -11,7 +12,7 @@ import { TransactionService } from '../supportive/services/transaction.service';
 })
 export class SaleIndexComponent {
   config= InventoryConfigurations.sale;
-  constructor(private observer:Observables,modalService:ModalService,_trans:TransactionService) {
+  constructor(private observer:Observables,modalService:ModalService,_trans:TransactionService,public route:Router) {
   }
   
   ngOnInit(): void {
@@ -24,6 +25,10 @@ export class SaleIndexComponent {
   }
   
   add(){}
-  edit(){}
+  edit = (sale: any) => {
+     
+    this.route.navigate(['/inventory/saleinvoice/' + this.config.model.sMid]);
+
+  };
   delete(){}
 }

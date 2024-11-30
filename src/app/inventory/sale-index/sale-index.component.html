@@ -5,7 +5,7 @@
 [tableData]="config.data"
 [dateFields]="['eDate']"
 (newClick)="add()"
-(edit)="edit()"
+(edit)="edit(this.config.model.sMid)"
 (delete)="delete()"
 [isAction]="true"
 [isNewAction]="true"

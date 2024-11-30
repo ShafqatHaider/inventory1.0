@@ -60,8 +60,6 @@ export const InventoryConfigurations = {
             getById:(param:any)=>`${environment.baseApiUrl}Sale/GetSaleById/${environment.companyId}/${param}`,
             delete:(param:any)=>`${environment.baseApiUrl}Sale/Delete/${environment.companyId}/${param}`
         },
-    
-
     },
     puchase: {
         data: [],
