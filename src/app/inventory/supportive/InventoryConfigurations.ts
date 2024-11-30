@@ -48,8 +48,6 @@ export const InventoryConfigurations = {
             getById:(param:any)=>`${environment.baseApiUrl}Measurements/GetUnitById/${param}/${environment.companyId}`,
             delete:(param:any)=>`${environment.baseApiUrl}Measurements/Delete/${param}/${environment.companyId}`
         },
-    
-
     },
     sale: {
         data: [],

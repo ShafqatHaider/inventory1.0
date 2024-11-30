@@ -13,7 +13,7 @@ export const MenuConfig = {
             { componentName: 'Purchase', path: '/inventory/purchase-index' },
             { componentName: 'Sale', path: '/inventory/sale-index' },
             { componentName: 'Sub category', path: '/inventory/subcategory-index' },
-            { componentName: 'saleinvoice', path: '/saleinvoice' },
+            { componentName: 'sale invoice', path: '/saleinvoice' },
             { componentName: 'Unit', path: '/inventory/unit-index' },
             { componentName: 'Warehouse', path: '/inventory/warehouse-index' },
             { componentName: 'Type', path: '/inventory/type-index' },
