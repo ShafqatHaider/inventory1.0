@@ -100,7 +100,7 @@ export class PurchaseIndexComponent implements OnInit {
     this.bit = 1;
     this.closeDateModal();
   };
-
+amount = this.config.model.gSale- this.config.model.sReturn;
   back = () => this.route.navigate(['/admin/dashboard']);
 
   openFormModal = () => this.formModal.show();

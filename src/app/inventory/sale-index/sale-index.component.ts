@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
 import { Observables } from '../../shared/services/observers';
+import { ModalService } from '../../shared/_components/modal/modal.service';
+import { TransactionService } from '../supportive/services/transaction.service';
 
 @Component({
   selector: 'app-sale-index',
@@ -9,15 +11,17 @@ import { Observables } from '../../shared/services/observers';
 })
 export class SaleIndexComponent {
   config= InventoryConfigurations.sale;
-  constructor(private observer:Observables) {
+  constructor(private observer:Observables,modalService:ModalService,_trans:TransactionService) {
   }
   
-  // ngOnInit(): void {
-  //   this.getData();
-  // }
-  // getData(){
-  //   this.observer.getLookups(`${this.config.endPoints.getAll}`)
-  // }
+  ngOnInit(): void {
+    this.getAllSale();
+  }
+  getAllSale(){
+    this.observer.getLookups(`${this.config.endpoints.getAll}`).subscribe(res=>{
+      this.config.data=res;
+    })
+  }
   
   add(){}
   edit(){}

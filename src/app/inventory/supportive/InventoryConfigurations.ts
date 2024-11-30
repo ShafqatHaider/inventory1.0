@@ -53,12 +53,12 @@ export const InventoryConfigurations = {
     },
     sale: {
         data: [],
-        model:null,
+        model:new INewSale(),
         endpoints:{
-            create:`${environment.baseApiUrl}CodeCodingCategory/create`,
-            getAll:`${environment.baseApiUrl}CodeCodingCategory/GetAllCategories/${environment.companyId}`,
-            getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
-            delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
+            create:`${environment.baseApiUrl}Sale/createSale`,
+            getAll:`${environment.baseApiUrl}Sale/GetAllSales/${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}Sale/GetSaleById/${environment.companyId}/${param}`,
+            delete:(param:any)=>`${environment.baseApiUrl}Sale/Delete/${environment.companyId}/${param}`
         },
     
 

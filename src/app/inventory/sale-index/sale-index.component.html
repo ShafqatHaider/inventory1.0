@@ -1,7 +1,7 @@
 <app-shared-table
 [tableTitle]="'Sale Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
+[tableHeaders]="['S#','Date','PartyName','Amount']"
+[tableKeys]="['sMid','eDate','sAccName','billAmount']"
 [tableData]="config.data"
 [dateFields]="['eDate']"
 (newClick)="add()"
