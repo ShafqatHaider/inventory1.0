@@ -1,14 +1,17 @@
+
 <app-shared-table
-[tableTitle]="'Sale Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
-[tableData]="config.data"
-[dateFields]="['eDate']"
-(newClick)="add()"
-(edit)="edit()"
-(delete)="delete()"
-[isAction]="true"
-[isNewAction]="true"
+  [tableTitle]="'Sale Index'"
+  [tableHeaders]="['S#', 'Date', 'PartyName', 'Amount']"
+  [tableKeys]="['sMid', 'eDate', 'sAccName', 'billAmount']"
+  [tableData]="config.data"
+  [dateFields]="['eDate']"
+  (newClick)="add()"
+  (edit)="edit($event)" 
+  (delete)="delete()"
+  [isAction]="true"
+  [isNewAction]="true"
+  [btnNext]="'New Sale'"
 ></app-shared-table>
+
 
   

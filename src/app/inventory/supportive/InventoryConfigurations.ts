@@ -3,6 +3,7 @@ import { ICategory } from "./interfaces/ICategory";
 import { ICodeCoding } from "./interfaces/ICodeCoding";
 import { ICodeEType } from "./interfaces/ICodeEType";
 import { INewSale } from "./interfaces/INewSale";
+import { IPurchase } from "./interfaces/IPurchase";
 import { ISubCate } from "./interfaces/ISubcategory";
 import { IUnits } from "./interfaces/IUnits";
 import { IWarehouse } from "./interfaces/IWarehouse";
@@ -47,27 +48,23 @@ export const InventoryConfigurations = {
             getById:(param:any)=>`${environment.baseApiUrl}Measurements/GetUnitById/${param}/${environment.companyId}`,
             delete:(param:any)=>`${environment.baseApiUrl}Measurements/Delete/${param}/${environment.companyId}`
         },
-    
-
     },
     sale: {
         data: [],
-        model:null,
+        model:new INewSale(),
         endpoints:{
-            create:`${environment.baseApiUrl}CodeCodingCategory/create`,
-            getAll:`${environment.baseApiUrl}CodeCodingCategory/GetAllCategories/${environment.companyId}`,
-            getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
-            delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
+            create:`${environment.baseApiUrl}Sale/createSale`,
+            getAll:`${environment.baseApiUrl}Sale/GetAllSales/${environment.companyId}/${environment.branchId}`,
+            getById:(param:any)=>`${environment.baseApiUrl}Sale/GetSaleById/${environment.companyId}/${param}`,
+            delete:(param:any)=>`${environment.baseApiUrl}Sale/Delete/${environment.companyId}/${param}`
         },
-    
-
     },
     puchase: {
         data: [],
-        model:null,
+        model:new IPurchase(),
          endpoints:{
-            create:`${environment.baseApiUrl}CodeCodingCategory/create`,
-            getAll:`${environment.baseApiUrl}CodeCodingCategory/GetAllCategories/${environment.companyId}`,
+            create:`${environment.baseApiUrl}Purchases/createPurchase`,
+            getAll:`${environment.baseApiUrl}Purchases/GetAllPurchase/${environment.companyId}/${environment.branchId}`,
             getById:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/GetCateById/${environment.companyId}/${param}`,
             delete:(param:any)=>`${environment.baseApiUrl}CodeCodingCategory/Delete/${environment.companyId}/${param}`
         },

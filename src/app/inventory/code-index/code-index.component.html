@@ -1,11 +1,11 @@
 <app-shared-table
 [tableTitle]="'Code Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
+[tableHeaders]="['Id','Code Name']"
+[tableKeys]="['companyId','title']"
 [tableData]="config.data"
 (newClick)="add()"
 (edit)="edit()"
-(delete)="delete()"
+(delete)="delete($event)"
 [isAction]="true"
 [isNewAction]="true"
 >

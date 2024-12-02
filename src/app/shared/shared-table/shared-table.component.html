@@ -15,6 +15,7 @@
         </div>
         <!-- <span *ngIf="!isLoading">{{ filteredData.length }} results found</span> -->
       </div>
+      <button class="btn btn-primary" *ngIf="isNewAction" (click)="onNewClick()">{{btnNext}}</button>
       <button class="btn btn-primary" *ngIf="isNewAction" (click)="onNewClick()">New</button>
       <button class="btn btn-warning" *ngIf="isReturnButton"  (click)="onAddNewClick()">{{btnTitle}}</button>
     </div>

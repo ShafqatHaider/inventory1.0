@@ -4,6 +4,11 @@ import { InventoryService } from '../inventory.service';
 import { DatePipe, Location } from '@angular/common';
 import { IPurchase } from '../supportive/interfaces/IPurchase';
 import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
+import { internal } from '../supportive/interfaces/internal-standard';
+import { environment } from '../../../environment/environment';
+import { Observables } from '../../shared/services/observers';
+import { ModalService } from '../../shared/_components/modal/modal.service';
+import { TransactionService } from '../supportive/services/transaction.service';
 
 
 @Component({
@@ -12,7 +17,7 @@ import { InventoryConfigurations } from '../supportive/InventoryConfigurations';
   styleUrls: ['./purchase-index.component.scss']
 })
 export class PurchaseIndexComponent implements OnInit {
-  // branchName=internal.branchName
+  branchName=internal.branchName
 
 
   config=InventoryConfigurations.puchase;
@@ -43,8 +48,8 @@ export class PurchaseIndexComponent implements OnInit {
     public route: Router,
     public acroute: ActivatedRoute,
     public pipe: DatePipe,
-    // private _US: UsermanagmentService,
-    public location:Location
+    public location:Location,
+    private observer:Observables,modalService:ModalService,_trans:TransactionService
   ) {}
 
   ngOnInit(): void {
@@ -55,11 +60,8 @@ export class PurchaseIndexComponent implements OnInit {
     let fd = this.pipe.transform(ffd, 'yyyy-MM-dd');
     this.tDate = td;
     this.fDate = fd;
-    // let ddate = this.pipe.transform(this.purchase.eDate, 'yyyy-MM-dd');
-    // this.eDate = ddate;
-
     this.assign = Number(localStorage.getItem('ASSIGN'));
-    this.lcid = Number(localStorage.getItem('LINKED_COMPANY_ID'));
+    this.lcid = environment.companyId
     this.groupId = Number(localStorage.getItem('GROUP_ID'));
     this.getData();
   }
@@ -67,10 +69,12 @@ export class PurchaseIndexComponent implements OnInit {
   // CORE FUNCTIONS
 
   getData = () =>
-    this._IS.getAllPurchases().subscribe(
-      (res) => (this.purchase = res),
-      (error) => console.log(error)
-    );
+    // this._IS.getAllPurchases().subscribe(
+    //   (res) => (this.purchase = res),
+    //   (error) => console.log(error)
+    this.observer.getLookups(`${this.config.endpoints.getAll}`).subscribe(result=>{
+      this.config.data=result;
+    })
   onTableDataChange = (event: any) => {
     this.page = event;
     this.getData();
@@ -96,7 +100,7 @@ export class PurchaseIndexComponent implements OnInit {
     this.bit = 1;
     this.closeDateModal();
   };
-
+amount = this.config.model.gSale- this.config.model.sReturn;
   back = () => this.route.navigate(['/admin/dashboard']);
 
   openFormModal = () => this.formModal.show();

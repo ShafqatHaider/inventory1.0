@@ -13,6 +13,7 @@ import { WarehouseIndexComponent } from './warehouse-index/warehouse-index.compo
 import { TypeIndexComponent } from './type-index/type-index.component';
 import { SharedTableComponent } from '../shared/shared-table/shared-table.component';
 import { UnitIndexComponent } from './unit-index/unit-index.component';
+import { SaleinvoiceComponent } from './saleinvoice/saleinvoice.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { UnitIndexComponent } from './unit-index/unit-index.component';
     TypeIndexComponent,
     UnitIndexComponent,
     WarehouseIndexComponent,
+    SaleinvoiceComponent,
 
     // StockadjustmentComponent, 
     // WarehouseComponent,

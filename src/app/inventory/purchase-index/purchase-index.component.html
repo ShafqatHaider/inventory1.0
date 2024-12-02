@@ -1,12 +1,12 @@
 <app-shared-table
-[tableTitle]="'Purchase Index'"
-[tableHeaders]="['Id','Date']"
-[tableKeys]="['cid','eDate']"
-[tableData]="config.data"
-(newClick)="add()"
-(edit)="edit($event)"
-(delete)="delete($event)"
-[isAction]="true"
-[isNewAction]="true"
+  [tableTitle]="'Purchase Index'"
+  [tableHeaders]="['S#', 'Date', 'Party', 'Amount']"
+  [tableKeys]="['pMid', 'eDate', 'sAccName', 'amount']"
+  [tableData]="config.data"
+  (newClick)="add()"
+  (edit)="edit($event)"
+  (delete)="delete($event)"
+  [isAction]="true"
+  [isNewAction]="true"
 >
 </app-shared-table>
