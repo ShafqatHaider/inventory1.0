@@ -15,6 +15,7 @@
   [title]="modalTitle"
   [template]="currentTemplate"
   [disableSave]="disableSave"
+  (save)="save()"
 />
 <!-- (save)="onSave()" -->
 <ng-template #createTemplate>
